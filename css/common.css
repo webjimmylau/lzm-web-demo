@@ -35,7 +35,7 @@
 }
 .head .menu li{
     float: left;
-    padding: 0 5px;
+    padding: 0 10px;
 }
 .head .menu li a{
     display: block;
@@ -61,6 +61,7 @@
     right: 0;
     line-height: 30px;
     background: #289e85;
+    border-radius: 0 0 2px 2px;
     z-index: 999;
 }
 .head .moreLink:hover .linkList{
@@ -83,14 +84,15 @@
     top: 50px;
     left: 0;
     width: 100%;
-    padding: 15px 0;
     line-height: 30px;
-    background: #fff;
+    padding: 15px 0;
+    background: #333;
     z-index: 9;
 }
 .subMenu .subTitle{
     float: left;
     margin: 5px 0;
+    color: #fff;
 }
 .subMenu ul {
     display: table-cell;
@@ -106,8 +108,8 @@
     display: block;
     padding: 0 10px;
     color: #666;
-    background: #eee;
-    border-radius: 3px;
+    background: #fff;
+    border-radius: 2px;
 }
 .subMenu li a:hover, .subMenu li a.click{
     color: #fff;
@@ -117,7 +119,7 @@
 
 /*container*/
 .container{
-    padding: 120px 0 50px 0;
+    padding: 140px 0 50px 0;
 }
 .container .contBox{
     position: relative;
@@ -127,7 +129,7 @@
 }
 .container .contBox .anchor{
     position: absolute;
-    top: -120px;
+    top: -140px;
     left: 0;
 }
 .container .contBox h4{
@@ -174,6 +176,22 @@
     color: #ccc;
     margin-right: 20px;
 }
+.foot .menu{
+    float: left;
+}
+.foot .menu li{
+    float: left;
+    padding: 0 10px;
+}
+.foot .menu li a{
+    display: block;
+    padding: 0 10px;
+    color: #fff;
+}
+.foot .menu li a:hover,.foot .menu li a.click{
+    color: #333;
+    background: #fff;
+}
 .return-top{
     bottom: 70px;
     right: 50%;
@@ -184,5 +202,6 @@
     text-align: center;
     color: #fff;
     background: #289e85;
+    border-radius: 2px;
 }
 /*end foot*/
