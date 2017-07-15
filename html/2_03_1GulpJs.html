@@ -13,10 +13,12 @@
 <div class="head"></div>
 <div class="subMenu">
     <div class="wrap">
-        <div class="subTitle">ReactJS专区：</div>
+        <div class="subTitle">GulpJS专区：</div>
         <ul>
-            <li><a href="#01" class="click">ReactJS简介</a></li>
-            <li><a href="#02">ReactJS用法</a></li>
+            <li><a href="#01" class="click">GulpJS简介</a></li>
+            <li><a href="#02">GulpJS 四个api</a></li>
+            <li><a href="#03">GulpJS结构</a></li>
+            <li><a href="#04">GulpJS用法</a></li>
         </ul>
     </div>
 </div>
@@ -24,17 +26,32 @@
     <div class="wrap">
         <div class="contBox">
             <i id="01" class="anchor"></i>
-            <h4>ReactJS简介</h4>
-            <p></p>
-            <p></p>
-            <p></p>
-            <p></p>
-            <p></p>
-            <p></p>
+            <h4>GulpJS简介</h4>
+            <p>易于使用 通过代码优于配置的策略，Gulp 让简单的任务简单，复杂的任务可管理。</p>
+            <p>构建快速 利用 Node.js 流的威力，你可以快速构建项目并减少频繁的 IO 操作。</p>
+            <p>插件高质 Gulp 严格的插件指南确保插件如你期望的那样简洁高质得工作。</p>
+            <p>易于学习 通过最少的 API，掌握 Gulp 毫不费力，构建工作尽在掌握：如同一系列流管道。</p>
         </div>
         <div class="contBox">
             <i id="02" class="anchor"></i>
-            <h4>ReactJS用法</h4>
+            <h4>Gulp 四个api</h4>
+            <p>gulp.src()方法是用来获取流的</p>
+            <p>gulp.dest()方法是用来写文件的</p>
+            <p>gulp.task()方法用来定义任务</p>
+            <p>gulp.watch()方法用来监视文件的变化</p>
+        </div>
+        <div class="contBox">
+            <i id="03" class="anchor"></i>
+            <h4>Gulp结构</h4>
+            <p>
+                <img src="../imgs/gulp_01.png">
+                <img src="../imgs/gulp_02.png">
+                <img src="../imgs/gulp_03.png">
+            </p>
+        </div>
+        <div class="contBox">
+            <i id="04" class="anchor"></i>
+            <h4>GulpJS用法</h4>
             <table class="tableNo1">
                 <tr>
                     <th colspan="2"><b>url模块 路径</b></th>
@@ -44,235 +61,109 @@
                     <td><b>描述</b></td>
                 </tr>
                 <tr>
-                    <td>react 三个库</td>
+                    <td>压缩/编译css</td>
                     <td>
-                        <p>&lt;script src="https://cdn.bootcss.com/react/15.4.2/<b>react</b>.min.js"&gt;&lt;/script&gt; // React 的核心库</p>
-                        <p>&lt;script src="https://cdn.bootcss.com/react/15.4.2/<b>react-dom</b>.min.js"&gt;&lt;/script&gt; // 提供与 DOM 相关的功能</p>
-                        <p>&lt;script src="https://cdn.bootcss.com/babel-standalone/6.22.1/<b>babel</b>.min.js"&gt;&lt;/script&gt; // 可以将 ES6 代码转为 ES5 代码</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>react 注释</td>
-                    <td><b>{</b>/*注释...*/<b>}</b></td>
-                </tr>
-                <tr>
-                    <td>react Demo</td>
-                    <td>
-                        <p>div id="example"&gt;&lt;/div&gt;</p>
-                        <p>&lt;script <b>type="text/babel"</b>&gt;</p>
-                        <p>&nbsp;&nbsp;ReactDOM.render(</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;{/*注释...*/}</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;Hello, world!&lt;/h1&gt;,</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;document.getElementById('example')</p>
-                        <p>&nbsp;&nbsp;);</p>
-                        <p>&lt;/script&gt;</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>react style</td>
-                    <td>
-                        <p>var <b>myStyle</b> = {</p>
-                        <p>&nbsp;&nbsp;fontFamily: "Microsoft YaHei",</p>
-                        <p>&nbsp;&nbsp;fontSize: 60,</p>
-                        <p>&nbsp;&nbsp;color: "red"</p>
-                        <p>};</p>
-                        <p>ReactDOM.render(</p>
-                        <p>&nbsp;&nbsp;&lt;div <b>style={myStyle}</b>&gt;web_jimmy_lau@126.com&lt;/div&gt;,</p>
-                        <p>&nbsp;&nbsp;document.getElementById("example")</p>
-                        <p>);</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>react arr</td>
-                    <td>
-                        <p>var <b>arr</b> = [</p>
-                        <p>&nbsp;&nbsp;&lt;h1&gt;国家&lt;/h1&gt;,</p>
-                        <p>&nbsp;&nbsp;&lt;h2&gt;省份&lt;/h2&gt;,</p>
-                        <p>&nbsp;&nbsp;&lt;h3&gt;城市&lt;/h3&gt;,</p>
-                        <p>&nbsp;&nbsp;&lt;h4&gt;城区&lt;/h4&gt;,</p>
-                        <p>&nbsp;&nbsp;&lt;h5&gt;街镇&lt;/h5&gt;,</p>
-                        <p>&nbsp;&nbsp;&lt;h6&gt;村委&lt;/h6&gt;</p>
-                        <p>];</p>
-                        <p>ReactDOM.render(</p>
-                        <p>&nbsp;&nbsp;&lt;div&gt;<b>{arr}</b>&lt;/div&gt;,</p>
-                        <p>&nbsp;&nbsp;document.getElementById("example")</p>
-                        <p>);</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>react 组件</td>
-                    <td>
-                        <p><b>var HelloMessage = React.createClass({</b></p>
-                        <p>&nbsp;&nbsp;<b>render: function(){</b></p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;<b>return</b> &lt;div&gt;Hello, World!&lt;/div&gt;</p>
-                        <p>&nbsp;&nbsp;<b>}</b></p>
-                        <p><b>});</b></p>
-                        <p>ReactDOM.render(</p>
-                        <p>&nbsp;&nbsp;<b>&lt;HelloMessage/&gt;</b>,</p>
-                        <p>&nbsp;&nbsp;document.getElementById("example")</p>
-                        <p>);</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>react this.props.name</td>
-                    <td>
-                        <p>var HelloName = React.createClass({</p>
-                        <p>&nbsp;&nbsp;render: function(){</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;return &lt;div&gt;Hello, <b>{this.props.name}</b>&lt;/div&gt;</p>
-                        <p>&nbsp;&nbsp;}</p>
+                        <p>var gulp = require("gulp");</p>
+                        <p>var plugins = require("gulp-load-plugins")();</p>
+                        <p>var config = require("../config").css;</p>
+                        <p>var handleErrors = require("../util/handleErrors");</p>
+                        <p>// build-css 编译css</p>
+                        <p>gulp.task("build-css", function(){</p>
+                        <p>&nbsp;&nbsp;return gulp.src(config.src)</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;.pipe(plugins.sass(config.settings))</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;.on("error", handleErrors)</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;.pipe(gulp.dest(config.build))</p>
                         <p>});</p>
-                        <p>ReactDOM.render(</p>
-                        <p>&nbsp;&nbsp;<b>&lt;HelloName name="jimmy" /&gt;</b>,</p>
-                        <p>&nbsp;&nbsp;document.getElementById("example")</p>
-                        <p>);</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>react 复合组件</td>
-                    <td>
-                        <p>var WebSite = React.createClass({</p>
-                        <p>&nbsp;&nbsp;render: function(){</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;return (</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>&lt;Name name={this.props.name} /&gt;</b></p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>&lt;Site site={this.props.site} /&gt;</b></p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;)</p>
-                        <p>&nbsp;&nbsp;}</p>
+                        <p>// pack-css 压缩+编译css</p>
+                        <p>gulp.task("pack-css", function(){</p>
+                        <p>&nbsp;&nbsp;return gulp.src(config.src)</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;.pipe(plugins.sass(config.settings))</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;.on("error", handleErrors)</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;.pipe(plugins.minifyCss())</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;.pipe(gulp.dest(config.build));</p>
                         <p>});</p>
-                        <p>var Name = React.createClass({</p>
-                        <p>&nbsp;&nbsp;render: function(){</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;return &lt;h1&gt<b>{this.props.name}</b>&lt;/h1&gt;</p>
-                        <p>&nbsp;&nbsp;}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>压缩/编译js</td>
+                    <td>
+                        <p>var gulp = require("gulp");</p>
+                        <p>var plugins = require("gulp-load-plugins")();</p>
+                        <p>var config = require("../config").js;</p>
+                        <p>// build-js 编译js</p>
+                        <p>gulp.task("build-js", function(){</p>
+                        <p>&nbsp;&nbsp;return gulp.src(config.src)</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;.pipe(gulp.dest(config.build));</p>
                         <p>});</p>
-                        <p>var Site = React.createClass({</p>
-                        <p>&nbsp;&nbsp;render: function(){</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;return &lt;a href=<b>{this.props.site}</b>&gt;<b>{this.props.site}</b>&lt;/a&gt;</p>
-                        <p>&nbsp;&nbsp;}</p>
+                        <p>// pack-js 压缩+编译js</p>
+                        <p>gulp.task("pack-js", function(){</p>
+                        <p>&nbsp;&nbsp;return gulp.src(config.src)</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;.pipe(plugins.uglify())</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;.pipe(gulp.dest(config.build));</p>
                         <p>});</p>
-                        <p>ReactDOM.render(</p>
-                        <p>&nbsp;&nbsp;<b>&lt;WebSite name="菜鸟教程" site="http://www.runoob.com" /&gt;</b>,</p>
-                        <p>&nbsp;&nbsp;document.getElementById("example")</p>
-                        <p>);</p>
                     </td>
                 </tr>
                 <tr>
-                    <td>react state 可变</td>
+                    <td>压缩/编译images</td>
                     <td>
-                        <p>var LikeButton = React.createClass({</p>
-                        <p>&nbsp;&nbsp;<b>getInitialState</b>: function(){</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;return {</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>liked: false</b></p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;}</p>
-                        <p>&nbsp;&nbsp;},</p>
-                        <p>&nbsp;&nbsp;<b>handleClick</b>: function(<b>event</b>){</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;<b>this.setState</b>({</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>liked: !this.state.liked</b></p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;});</p>
-                        <p>&nbsp;&nbsp;},</p>
-                        <p>&nbsp;&nbsp;render: function(){</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;var test = <b>this.state.liked</b> ? "展开" : "收起";</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;var addStyle = {</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;display: <b>this.state.liked</b> ? "block" : "none"</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;};</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;return (</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div className="box"&gt;</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div className="top" <b>onClick={this.handleClick}</b>&gt;<b>{test}</b>&lt;/div&gt;</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div className="bottom" <b>style={addStyle}</b>&gt;</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;&lt;a href="javascript:;"&gt;我的设置&lt;/a&gt;&lt;/div&gt;</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;&lt;a href="javascript:;"&gt;个人中心&lt;/a&gt;&lt;/div&gt;</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;&lt;a href="javascript:;"&gt;收货地址&lt;/a&gt;&lt;/div&gt;</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;&lt;a href="javascript:;"&gt;帮助中心&lt;/a&gt;&lt;/div&gt;</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;&lt;a href="javascript:;"&gt;退出&lt;/a&gt;&lt;/div&gt;</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;);</p>
-                        <p>&nbsp;&nbsp;}</p>
+                        <p>var gulp = require("gulp");</p>
+                        <p>var plunins = require("gulp-load-plugins")();</p>
+                        <p>var config = require("../config").images;</p>
+                        <p>// build-images 压缩+编译images</p>
+                        <p>gulp.task("build-images", function(){</p>
+                        <p>&nbsp;&nbsp;return gulp.src(config.src)</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;.pipe(gulp.dest(config.build));</p>
                         <p>});</p>
-                        <p>ReactDOM.render(</p>
-                        <p>&nbsp;&nbsp;&lt;LikeButton /&gt;,</p>
-                        <p>&nbsp;&nbsp;document.getElementById("example")</p>
-                        <p>);</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>react props不可变</td>
-                    <td>
-                        <p>var HelloMessage = React.createClass({</p>
-                        <p>&nbsp;&nbsp;<b>getDefaultProps</b>: function(){</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;return {</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>name: "jimmy!"</b></p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;}</p>
-                        <p>&nbsp;&nbsp;},</p>
-                        <p>&nbsp;&nbsp;render: function(){</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;return (</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;Hello, <b>{this.props.name}</b>!&lt;/div&gt;</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;);</p>
-                        <p>&nbsp;&nbsp;}</p>
+                        <p>// pack-images 压缩+编译images</p>
+                        <p>gulp.task("pack-images", function(){</p>
+                        <p>&nbsp;&nbsp;return gulp.src(config.src)</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;.pipe(plunins.imagemin())</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;.pipe(gulp.dest(config.build));</p>
                         <p>});</p>
-                        <p>ReactDOM.render(</p>
-                        <p>&nbsp;&nbsp;&lt;HelloMessage /&gt;,</p>
-                        <p>&nbsp;&nbsp;document.getElementById("example")</p>
-                        <p>);</p>
                     </td>
                 </tr>
                 <tr>
-                    <td>react propTypes类型检测</td>
+                    <td>clean清除</td>
                     <td>
-                        <p><b>var title = "菜鸟教程";</b></p>
-                        <p>var MyTitle = React.createClass({</p>
-                        <p>&nbsp;&nbsp;propTypes: {</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;<b>title: React.PropTypes.string.isRequired</b></p>
-                        <p>&nbsp;&nbsp;},</p>
-                        <p>&nbsp;&nbsp;render: function(){</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;return (</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;{this.props.title}&lt;/h1&gt;</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;)</p>
-                        <p>&nbsp;&nbsp;}</p>
+                        <p>var gulp = require("gulp");</p>
+                        <p>var gulpPlugins = require("gulp-load-plugins")();</p>
+                        <p>var config = require("../config").clean;</p>
+                        <p>// 清除该路径文件</p>
+                        <p>gulp.task("clean", function(){</p>
+                        <p>&nbsp;&nbsp;return gulp.src(config.build)</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;.pipe(gulpPlugins.clean());</p>
                         <p>});</p>
-                        <p>ReactDOM.render(</p>
-                        <p>&nbsp;&nbsp;&lt;MyTitle <b>title={title}</b> /&gt;,</p>
-                        <p>&nbsp;&nbsp;document.getElementById("example")</p>
-                        <p>);</p>
                     </td>
                 </tr>
                 <tr>
-                    <td>react 状态和属性</td>
+                    <td>watch监听</td>
                     <td>
-                        <p>getInitialState：初始状态</p>
-                        <p>getDefaultProps：默认属性</p>
+                        <p>var gulp = require("gulp");</p>
+                        <p>var watch = require("gulp-watch");</p>
+                        <p>var config = require("../config");</p>
+                        <p>// watch 监听 css、images、js文件，如果改变，则编译该路径下的文件</p>
+                        <p>gulp.task("watch", function(){</p>
+                        <p>&nbsp;&nbsp;watch(config.css.src, function(){</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;gulp.start("build-css");</p>
+                        <p>&nbsp;&nbsp;});</p>
+                        <p>&nbsp;&nbsp;watch(config.js.src, function(){</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;gulp.start("build-js");</p>
+                        <p>&nbsp;&nbsp;});</p>
+                        <p>&nbsp;&nbsp;watch(config.images.src, function(){</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;gulp.start("build-images");</p>
+                        <p>&nbsp;&nbsp;});</p>
+                        <p>});</p>
                     </td>
                 </tr>
                 <tr>
-                    <td>react 组件 API</td>
+                    <td>gulp压缩/编译全部</td>
                     <td>
-                        <p>setState：设置状态</p>
-                        <p>replaceState：替换状态</p>
-                        <p>setProps：设置属性</p>
-                        <p>replaceProps：替换属性</p>
-                        <p>forceUpdate：强制更新</p>
-                        <p>findDOMNode：获取DOM节点</p>
-                        <p>isMounted：判断组件挂载状态</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>react 组件 生命周期</td>
-                    <td>
-                        <p>componentWillMount：在渲染之前调用，在客户端也在服务器</p>
-                        <p>componentDidMount：在第一次渲染后调用，只在客户端。可通过this.getDOMNode()来进行访问，可以在这个方法调用setTimeout、setInterval或者发送ajax请求</p>
-                        <p>componentWillReceiveProps：在组件收到一个新的prop时被调用。这个方法在初始化render时不会被调用</p>
-                        <p>shouldComponentUpdate：返回一个布尔值。在组件接收到新的props或者state时被调用。在初始化或者使用forceUpdate时不被调用</p>
-                        <p>componentWillUpdate：在组件接收到新的props或者state但还没有render时被调用。在初始化时不会被调用</p>
-                        <p>componentDidUpdate：在组件完成更新后立即调用。在初始化时不会被调用</p>
-                        <p>componentWillUnmount：在组件从DOM中移除的时候立刻被调用</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>react 特殊属性refs</td>
-                    <td>
-                        <p>html&lt;p ref="myName" &gt;&lt;/p&gt;</p>
-                        <p>js this.refs.myName.title = "jimmy"</p>
-                        <p>js this.refs.myName.focus()</p>
+                        <p>var gulp = require("gulp");</p>
+                        <p>var gulpSync = require("gulp-sync")(gulp);</p>
+                        <p>// gulp 命令 默认执行 default</p>
+                        <p>// gulp deploy 命令 执行 deploy</p>
+                        <p>gulp.task("default", gulpSync.sync(["clean", ["build-css", "build-js", "build-images"], "watch"]));</p>
+                        <p>gulp.task("deploy", gulpSync.sync(["clean", ["pack-css", "pack-js", "pack-images"]]));</p>
                     </td>
                 </tr>
             </table>
