@@ -1,21 +1,41 @@
 ﻿.colorRed{
     color: #f45;
 }
-/*head*/
-.head{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: #289e85;
-    line-height: 50px;
-    z-index: 999;
-}
 .wrap{
     position: relative;
     margin: 0 auto;
     width: 1160px;
     padding: 0 20px;
+}
+/*head and foot*/
+.head, .foot{
+    position: fixed;
+    left: 0;
+    width: 100%;
+    background: #39403E;
+    line-height: 50px;
+    z-index: 1;
+}
+.menu{
+    float: left;
+}
+.menu li{
+    float: left;
+    padding-right: 20px;
+}
+.menu li a{
+    display: block;
+    padding: 0 10px;
+    color: #ccc;
+}
+.menu li a:hover,.menu li a.click{
+    color: #333;
+    background: #fff;
+}
+/*end head and foot*/
+/*head*/
+.head{
+    top: 0;
 }
 .head .logo{
     float: left;
@@ -24,34 +44,19 @@
     margin-right: 30px;
 }
 .head .logo a{
+    line-height: 50px;
     font-size: 20px;
-    color: #fff;
+    color: #ccc;
 }
 .head .logo a:hover{
     text-decoration:none;
-}
-.head .menu{
-    float: left;
-}
-.head .menu li{
-    float: left;
-    padding: 0 10px;
-}
-.head .menu li a{
-    display: block;
-    padding: 0 10px;
-    color: #fff;
-}
-.head .menu li a:hover,.head .menu li a.click{
-    color: #289e85;
-    background: #fff;
 }
 .head .moreLink{
     position: relative;
     float: right;
     width: 100px;
     text-align: center;
-    color: #fff;
+    color: #ccc;
     cursor: pointer;
 }
 .head .moreLink .linkList{
@@ -59,10 +64,11 @@
     position: absolute;
     top: 50px;
     right: 0;
-    line-height: 30px;
-    background: #289e85;
-    border-radius: 0 0 2px 2px;
-    z-index: 999;
+    line-height: 32px;
+    background: #39403E;
+    padding-bottom: 10px;
+    /*border-radius: 0 0 2px 2px;*/
+    z-index: 2;
 }
 .head .moreLink:hover .linkList{
     display: block;
@@ -70,11 +76,11 @@
 }
 .head .moreLink .linkList a{
     display: block;
-    color: #fff;
+    color: #ccc;
     white-space: nowrap;
 }
 .head .moreLink .linkList a:hover{
-    background: #32BA9D;
+    background: #454847;
 }
 /*end head*/
 
@@ -85,9 +91,9 @@
     left: 0;
     width: 100%;
     line-height: 30px;
-    padding: 15px 0;
-    background: #333;
-    z-index: 9;
+    padding: 5px 0;
+    background: #289e85;
+    z-index: 1;
 }
 .subMenu .subTitle{
     float: left;
@@ -107,19 +113,18 @@
 .subMenu li a{
     display: block;
     padding: 0 10px;
-    color: #666;
-    background: #fff;
-    border-radius: 2px;
+    color: #fff;
+    /*border-radius: 2px;*/
 }
 .subMenu li a:hover, .subMenu li a.click{
-    color: #fff;
-    background: #289e85;
+    color: #289e85;
+    background: #fff;
 }
 /*end subMenu*/
 
 /*container*/
 .container{
-    padding: 140px 0 50px 0;
+    padding: 120px 0 50px 0;
 }
 .container .contBox{
     position: relative;
@@ -129,7 +134,7 @@
 }
 .container .contBox .anchor{
     position: absolute;
-    top: -140px;
+    top: -120px;
     left: 0;
 }
 .container .contBox h4{
@@ -138,6 +143,15 @@
     text-indent: 5px;
     border-left: 4px solid #666;
     line-height: 16px;
+}
+.container .contBox img{
+    vertical-align: top;
+}
+.container-javascript {
+    padding-top: 200px;
+}
+.container-javascript .contBox .anchor {
+    top: -200px;
 }
 /*end container*/
 
@@ -165,43 +179,87 @@
 
 /*foot*/
 .foot{
-    position: fixed;
-    left: 0;
     bottom: 0;
-    width: 100%;
-    background: #333;
-    line-height: 50px;
-}
-.foot a{
-    color: #ccc;
-    margin-right: 20px;
-}
-.foot .menu{
-    float: left;
-}
-.foot .menu li{
-    float: left;
-    padding: 0 10px;
-}
-.foot .menu li a{
-    display: block;
-    padding: 0 10px;
-    color: #fff;
-}
-.foot .menu li a:hover,.foot .menu li a.click{
-    color: #333;
-    background: #fff;
 }
 .return-top{
-    bottom: 70px;
+    /*right: 20px;*/
+    /*bottom: 0;*/
+    bottom: 0;
     right: 50%;
-    margin-right: -650px;
+    margin-right: -580px;
     width: 50px;
     height: 50px;
     line-height: 50px;
     text-align: center;
     color: #fff;
     background: #289e85;
-    border-radius: 2px;
+    /*border-radius: 2px;*/
+    z-index: 9;
 }
 /*end foot*/
+
+/*media*/
+@media screen and (min-width: 1617px){
+    .wrap{
+        width: auto;
+        padding: 0;
+    }
+    .head, .foot{
+        width: 200px;
+        line-height: 40px;
+    }
+    .head{
+        top: 0;
+        height: 100%;
+    }
+    .foot{
+        bottom: 50px;
+    }
+    .head .logo, .menu, .menu li{
+        float: inherit;
+    }
+    .head .logo a{
+        padding-left: 10px;
+    }
+    .menu li{
+        padding-left: 10px;
+        padding-right: 10px;
+        margin-bottom: 1px;
+    }
+    .head .moreLink{
+        display: none;
+    }
+    .subMenu{
+        left: inherit;
+        right: 0;
+        top: 0;
+        width: 200px;
+        height: 100%;
+        line-height: 40px;
+        padding: 0;
+    }
+    .subMenu .subTitle, .subMenu li{
+        float: inherit;
+    }
+    .subMenu .subTitle{
+        padding-left: 10px;
+    }
+    .subMenu li{
+        margin: 0 10px 1px 10px;
+    }
+    .container{
+        padding: 0 200px;
+        margin: 20px;
+    }
+    .container .contBox .anchor{
+        top: -20px;
+    }
+    .return-top{
+        right: 10px;
+        width: 180px;
+        bottom: 10px;
+        margin-right: 0;
+        background: #39403E;
+    }
+}
+/*end media*/
