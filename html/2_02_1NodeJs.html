@@ -48,7 +48,7 @@
                     <td>启动服务</td>
                     <td>
                         <p>http.createServer(function(req, res){</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;res.writeHead(200, {"Content-Type": "text/plain");</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;res.writeHead(200, {"Content-Type": "text/plain"});</p>
                         <p>&nbsp;&nbsp;&nbsp;&nbsp;res.write(str);</p>
                         <p>&nbsp;&nbsp;&nbsp;&nbsp;res.end();</p>
                         <p>}).listen(port, fn);</p>
@@ -83,7 +83,7 @@
                 <tr>
                     <td>其他</td>
                     <td>
-                        <p>var eventListeners = events.EventEmitter.listenerCount(eventEmitter, event); // 返回 event
+                        <p>var eventListeners = require("events").EventEmitter.listenerCount(eventEmitter, event); // 返回 event
                             监听事件数量</p>
                     </td>
                 </tr>

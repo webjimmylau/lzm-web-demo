@@ -15,8 +15,8 @@
     <div class="wrap">
         <div class="subTitle">NodeJs专区：</div>
         <ul>
-            <li><a href="#01" class="click">NodeJs简介</a></li>
-            <li><a href="#02">NodeJs用法</a></li>
+            <li><a href="#01" class="click">ExpressJs简介</a></li>
+            <li><a href="#02">ExpressJs用法</a></li>
         </ul>
     </div>
 </div>
@@ -24,437 +24,304 @@
     <div class="wrap">
         <div class="contBox">
             <i id="01" class="anchor"></i>
-            <h4>NodeJs简介</h4>
-            <p>Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境。</p>
-            <p>Node.js 使用了一个事件驱动、非阻塞式 I/O 的模型，使其轻量又高效。</p>
-            <p>Node.js 的包管理器 npm，是全球最大的开源库生态系统。</p>
+            <h4>ExpressJs简介</h4>
+            <p>Express.js 是一个基于 Node.js 平台的极简、灵活的 web 应用开发框架，它提供一系列强大的特性，帮助你创建各种 Web 和移动设备应用。</p>
+            <p>Express.js 丰富的 HTTP 快捷方法和任意排列组合的 Connect 中间件，让你创建健壮、友好的 API 变得既快速又简单。</p>
+            <p>Express.js 不对 Node.js 已有的特性进行二次抽象，我们只是在它之上扩展了 Web 应用所需的基本功能。</p>
         </div>
         <div class="contBox">
             <i id="02" class="anchor"></i>
-            <h4>NodeJs用法</h4>
+            <h4>ExpressJs用法</h4>
             <table class="tableNo1">
                 <tr>
-                    <th colspan="2"><b>http模块 服务器请求和响应</b></th>
+                    <th colspan="2"><b>express 组织结构</b></th>
                 </tr>
                 <tr>
                     <td width="25%"><b>代码</b></td>
                     <td><b>描述</b></td>
                 </tr>
                 <tr>
-                    <td>http模块介绍</td>
-                    <td>主要用于搭建 HTTP 服务端和客户端，使用 HTTP 服务器或客户端功能必须调用 http 模块</td>
-                </tr>
-                <tr>
-                    <td>启动服务</td>
+                    <td>app demo</td>
                     <td>
-                        <p>http.createServer(function(req, res){</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;res.writeHead(200, {"Content-Type": "text/plain");</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;res.write(str);</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;res.end();</p>
-                        <p>}).listen(port, fn);</p>
+                        <p>本地模块-----------------------|- node_modules</p>
+                        <p>静态文件-----------------------|- public</p>
+                        <p>路由文件-----------------------|- routes</p>
+                        <p>网页模板-----------------------|- views</p>
+                        <p>启动脚本-----------------------|- app.js</p>
+                        <p>配置文件-----------------------|- package.json</p>
                     </td>
                 </tr>
             </table>
             <table class="tableNo1">
                 <tr>
-                    <th colspan="2"><b>events模块 事件监听触发器</b></th>
+                    <th colspan="2"><b>启动脚本 package.json</b></th>
                 </tr>
                 <tr>
                     <td width="25%"><b>代码</b></td>
                     <td><b>描述</b></td>
                 </tr>
                 <tr>
-                    <td>引入和创建</td>
+                    <td>package.json</td>
+                    <td>用于指定app信息，nodejs版本号和其他组件的依赖关系</td>
+                </tr>
+                <tr>
+                    <td>具体内容</td>
                     <td>
-                        <p>var events = require("events"); // 引入 events 模块</p>
-                        <p>var eventEmitter = new events.EventEmitter(); // 创建 eventEmitter 对象</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>注册、调用和解除</td>
-                    <td>
-                        <p>eventEmitter.once(event, listener); // 注册一个单次监听器，只触发一次就会立即解除</p>
-                        <p>eventEmitter.addListener(event, listener); // 添加一个监听器到监听器数组的尾部</p>
-                        <p>eventEmitter.on(event, listener); // 注册监听器</p>
-                        <p>eventEmitter.emit(event); // 调用监听器</p>
-                        <p>eventEmitter.removeListener(event, listener); // 移除 event 监听的 listener 函数</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>其他</td>
-                    <td>
-                        <p>var eventListeners = events.EventEmitter.listenerCount(eventEmitter, event); // 返回 event
-                            监听事件数量</p>
-                    </td>
-                </tr>
-            </table>
-            <table class="tableNo1">
-                <tr>
-                    <th colspan="2"><b>fs模块 文件</b></th>
-                </tr>
-                <tr>
-                    <td width="25%"><b>代码</b></td>
-                    <td><b>描述</b></td>
-                </tr>
-                <tr>
-                    <td>createReadStream读取流</td>
-                    <td>
-                        <p>var readStream = fs.createReadStream("input.txt");</p>
-                        <p>readStream.setEncoding("utf8");</p>
-                        <p>readStream.on("data", fn);</p>
-                        <p>readStream.on("end", fn);</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>createWriteStream写入流</td>
-                    <td>
-                        <p>var writeStream = fs.createWriteStream("write.txt");</p>
-                        <p>var data = "菜鸟教程官网地址：www.runoob.com";</p>
-                        <p>writeStream.write(data, "utf8");</p>
-                        <p>writeStream.end();</p>
-                        <p>writeStream.on("finish", fn);</p>
-                        <p>writeStream.on("error", fn);</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>pipe管道流</td>
-                    <td>
-                        <p>var readStream = fs.createReadStream("input.txt");</p>
-                        <p>var writeStream = fs.createWriteStream("read-input.txt");</p>
-                        <p>readStream.pipe(writeStream);</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>链式流（压缩）</td>
-                    <td>
-                        <p>var zlib = require("zlib");</p>
-                        <p>var readStream = fs.createReadStream("input.txt");</p>
-                        <p>readStream.pipe(zlib.createGzip()).pipe(fs.createWriteStream("input.txt.gz"));</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>链式流（解压）</td>
-                    <td>
-                        <p>var zlib = require("zlib");</p>
-                        <p>var readStream = fs.createReadStream("input.txt.gz");</p>
-                        <p>readStream.pipe(zlib.createGunzip()).pipe(fs.createWriteStream("input-gz.txt"));</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>writeFile写入文件</td>
-                    <td>fs.writeFile(filename, data, callback);</td>
-                </tr>
-                <tr>
-                    <td>readFile异步读取数据（非阻塞）</td>
-                    <td>fs.readFile(filename, callback);</td>
-                </tr>
-                <tr>
-                    <td>readFileSync同步读取文件（阻塞）</td>
-                    <td>
-                        <p>var data = fs.readFileSync('input.txt');</p>
-                        <p>console.log("同步读取: " + data.toString());</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>open打开文件</td>
-                    <td>fs.open("input.txt", "r+", callback);</td>
-                </tr>
-                <tr>
-                    <td>read读取文件</td>
-                    <td>fs.read(fd, buffer, offset, length, callback);</td>
-                </tr>
-                <tr>
-                    <td>ftruncate截取文件</td>
-                    <td>fs.ftruncate(fd, len, callback);</td>
-                </tr>
-                <tr>
-                    <td>close关闭文件</td>
-                    <td>fs.close(fd, callback);</td>
-                </tr>
-                <tr>
-                    <td>unlink删除文件</td>
-                    <td>fs.unlink(path, callback);</td>
-                </tr>
-                <tr>
-                    <td>mkdir创建目录</td>
-                    <td>fs.mkdir(path, callback);</td>
-                </tr>
-                <tr>
-                    <td>readdir读取目录</td>
-                    <td>fs.readdir(path, callbcak);</td>
-                </tr>
-                <tr>
-                    <td>rmdir删除目录</td>
-                    <td>fs.rmdir(path, callback);</td>
-                </tr>
-                <tr>
-                    <td>stat判断</td>
-                    <td>
-                        <p>fs.stat('input.txt', function (err, stats) {</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;console.log("是否为文件(isFile) ? " + stats.isFile());</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;console.log("是否为目录(isDirectory) ? " + stats.isDirectory());</p>
-                        <p>});</p>
-                    </td>
-                </tr>
-            </table>
-            <table class="tableNo1">
-                <tr>
-                    <th colspan="2"><b>url模块 路径</b></th>
-                </tr>
-                <tr>
-                    <td width="25%"><b>代码</b></td>
-                    <td><b>描述</b></td>
-                </tr>
-                <tr>
-                    <td>urlObj</td>
-                    <td>http://localhost:3000/app/user/?name=lzm&age=28</td>
-                </tr>
-                <tr>
-                    <td>url.parse(urlObj)</td>
-                    <td>
-                        <p>Url {</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;href: 'http://localhost:3000/app/user/?name=lzm&age=28',</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;protocol: 'http:', // 请求协议</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;host: 'localhost:3000', // URL主机名已全部转换成小写, 包括端口信息</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;hostname: 'localhost', // 主机的主机名部分, 已转换成小写</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;port: '3000', // 主机的端口号部分</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;path: '/app/user?name=lzm&age=28', // pathname 和 search 连在一起</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;pathname: '/app/user', // URL的路径部分,位于主机名之后请求查询之前</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;search: '?name=lzm&age=28', // URL 的“查询字符串”部分，包括开头的问号</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;query: 'name=lzm&age=28', // 字符串中的参数部分（问号后面部分字符串），可用 querystring.parse() 解析后返回的对象</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;hash: null, // URL 的 “#” 后面部分（包括 # 符号）</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;auth: null, // URL中身份验证信息部分</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;slashes: true,</p>
+                        <p>{</p>
+                        <p>&nbsp;&nbsp;"name": "demo",</p>
+                        <p>&nbsp;&nbsp;"description": "My First Express App",</p>
+                        <p>&nbsp;&nbsp;"version": "0.0.1",</p>
+                        <p>&nbsp;&nbsp;"dependencies": {</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;"express": "3.x"</p>
+                        <p>&nbsp;&nbsp;}</p>
                         <p>}</p>
                     </td>
                 </tr>
-                <tr>
-                    <td>url.format(urlObj)</td>
-                    <td>输出：http://localhost:3000/app/user/?name=lzm&age=28</td>
-                </tr>
-                <tr>
-                    <td>url.resolve(from, to)</td>
-                    <td>url.parse(req.url).query // 输出：name=lzm&age=28</td>
-                </tr>
             </table>
             <table class="tableNo1">
                 <tr>
-                    <th colspan="2"><b>querystring模块</b></th>
+                    <th colspan="2"><b>创建 express 服务器</b></th>
                 </tr>
                 <tr>
                     <td width="25%"><b>代码</b></td>
                     <td><b>描述</b></td>
                 </tr>
                 <tr>
-                    <td>querystring.parse(str)</td>
-                    <td>querystring.parse(url.parse(req.url).query); // 将 query 转为对象{"name":"lzm","age":"28"}</td>
-                </tr>
-                <tr>
-                    <td>querystring.stringify(obj, [sep], [eq])</td>
-                    <td>querystring.stringify(querystring.parse(url.parse(req.url).query), "|", "*"); // 指定了分隔符和分配符,'|'代替'&','*'代替'='</td>
-                </tr>
-                <tr>
-                    <td>querystring.escape(str)</td>
-                    <td>querystring.escape(url.parse(req.url).query); // 参数编码 '&'、'='和汉字进行编码</td>
-                </tr>
-                <tr>
-                    <td>querystring.unescape(str)</td>
-                    <td>querystring.unescape(querystring.escape(url.parse(req.url).query)); // 参数解码 对escape的编码进行解码</td>
-                </tr>
-            </table>
-            <table class="tableNo1">
-                <tr>
-                    <th colspan="2"><b>path模块</b></th>
-                </tr>
-                <tr>
-                    <td width="25%"><b>代码</b></td>
-                    <td><b>描述</b></td>
-                </tr>
-                <tr>
-                    <td>path.normalize</td>
-                    <td>var myPath = path.normalize(__dirname + '/test/a//b//../c/utilyou.mp3'); //路径解析，得到规范化的路径格式</td>
-                </tr>
-                <tr>
-                    <td>path.join</td>
-                    <td>var myPath = path.join(path1, path2, path3); // 路径结合、合并，路径最后不会带目录分隔符</td>
-                </tr>
-                <tr>
-                    <td>path.resolve</td>
-                    <td>var myPath = path.resolve('path1', 'path2', 'a/b\\c/'); // 获取绝对路径</td>
-                </tr>
-                <tr>
-                    <td>path.relative</td>
-                    <td>var _path = path.relative(from, to); // 获取相对路径</td>
-                </tr>
-                <tr>
-                    <td>path.dirname</td>
-                    <td>var myPath = path.dirname(__dirname + '/test/util you.mp3'); // 获取路径中目录名</td>
-                </tr>
-                <tr>
-                    <td>path.basename</td>
-                    <td>var myPath = path.basename(__dirname + '/test/util you.mp3', '.mp3'); // 获取路径中文件名,后缀是可选的，如果加，请使用'.ext'方式来匹配，则返回值中不包括后缀名；</td>
-                </tr>
-                <tr>
-                    <td>path.extname</td>
-                    <td>// 获取路径中的扩展名，如果没有'.'，则返回空</td>
-                </tr>
-                <tr>
-                    <td>path.sep属性</td>
-                    <td>// 返回操作系统中文件分隔符； window是'\\', Unix是'/'</td>
-                </tr>
-                <tr>
-                    <td>path.delimiter属性</td>
-                    <td>//返回操作系统中目录分隔符，如window是';', Unix中是':'</td>
-                </tr>
-            </table>
-            <table class="tableNo1">
-                <tr>
-                    <th colspan="2"><b>util模块 继承、转字符串和判断类型</b></th>
-                </tr>
-                <tr>
-                    <td width="25%"><b>代码</b></td>
-                    <td><b>描述</b></td>
-                </tr>
-                <tr>
-                    <td>inherits继承</td>
-                    <td>util.inherits(Sub, Base); // Sub继承Base的原型</td>
-                </tr>
-                <tr>
-                    <td>inspect字符串</td>
-                    <td>util.inspect(obj, true, null, true) // obj转字符串</td>
-                </tr>
-                <tr>
-                    <td>isArray数组</td>
-                    <td>util.isArray([]) // 判断是否为数组</td>
-                </tr>
-                <tr>
-                    <td>isRegExp正则</td>
-                    <td>util.isRegExp(/some regexp/)</td>
-                </tr>
-                <tr>
-                    <td>isDate日期</td>
-                    <td>util.isDate(new Date()) // 判断是否为日期</td>
-                </tr>
-                <tr>
-                    <td>isError报错</td>
-                    <td>util.isError(new Error()) // 判断是否报错</td>
-                </tr>
-            </table>
-            <table class="tableNo1">
-                <tr>
-                    <th colspan="2"><b>Buffer类 缓冲器</b></th>
-                </tr>
-                <tr>
-                    <td width="25%"><b>代码</b></td>
-                    <td><b>描述</b></td>
-                </tr>
-                <tr>
-                    <td>Buffer类介绍</td>
+                    <td>创建app</td>
                     <td>
-                        JavaScript 语言自身只有字符串数据类型，没有二进制数据类型。
-                        但在处理像TCP流或文件流时，必须使用到二进制数据。因此在 Node.js中，定义了一个 Buffer 类，该类用来创建一个专门存放二进制数据的缓存区。
+                        <p>var express = require('express');</p>
+                        <p>var app = express();</p>
                     </td>
                 </tr>
                 <tr>
-                    <td>创建Buffer</td>
+                    <td>指定更目录显示的内容</td>
                     <td>
-                        <p>var buf1 = new Buffer(256);</p>
-                        <p>var buf2 = new Buffer([10, 20, 30, 40, 50]);</p>
-                        <p>var buf3 = new Buffer("www.runoob.com");</p>
-                        <p>var buf4 = buf1.write("www.runoob.com");</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>转string</td>
-                    <td>
-                        buf.toString(encoding, start, end); // 参数可选
-                    </td>
-                </tr>
-                <tr>
-                    <td>转JSON</td>
-                    <td>buf.toJSON();</td>
-                </tr>
-                <tr>
-                    <td>合并</td>
-                    <td>Buffer.concat([arg1, arg2]);</td>
-                </tr>
-                <tr>
-                    <td>比较</td>
-                    <td>buf1.compare(buf2)</td>
-                </tr>
-                <tr>
-                    <td>拷贝</td>
-                    <td>buf1.copy(buf2);</td>
-                </tr>
-                <tr>
-                    <td>裁剪</td>
-                    <td>buf1.slice(0, 4);</td>
-                </tr>
-                <tr>
-                    <td>长度</td>
-                    <td>buf.length</td>
-                </tr>
-            </table>
-            <table class="tableNo1">
-                <tr>
-                    <th colspan="2"><b>全局对象和全局属性</b></th>
-                </tr>
-                <tr>
-                    <td width="25%"><b>代码</b></td>
-                    <td><b>描述</b></td>
-                </tr>
-                <tr>
-                    <td>__dirname</td>
-                    <td>当前文件所在目录</td>
-                </tr>
-                <tr>
-                    <td>__filename</td>
-                    <td>当前文件的路径+文件名</td>
-                </tr>
-                <tr>
-                    <td>setTimeout clearTimeout</td>
-                    <td>
-                        <p>var t1 = setTimeout(printHello1, 3000); // n秒后执行fn（只执行一次）</p>
-                        <p>clearTimeout(t1); // 清除定时器t1</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>setInterval clearInterval</td>
-                    <td>
-                        <p>var t2 = setInterval(printHello2, 1000); // 每个n秒执行fn（永远执行）</p>
-                        <p>clearInterval(t2); // 清除定时器t2</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>console</td>
-                    <td>
-                        <p>console.info("程序开始执行：");</p>
-                        <p>var counter = 10;</p>
-                        <p>console.log("计数: %d", counter);</p>
-                        <p>console.time("获取数据");</p>
-                        <p>console.log("time-timeEnd 获取数据中");</p>
-                        <p>console.timeEnd('获取数据');</p>
-                        <p>console.info("程序执行完毕。");</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>process</td>
-                    <td>
-                        <p>//它用于描述当前Node.js 进程状态的对象</p>
-                        <p>process.on("exit", function(code){</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;setTimeout(function(){</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log("该代码不会执行");</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;}, 1000);</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;console.log("退出码为：", code);</p>
+                        <p>app.get('/', function(req, res){</p>
+                        <p>&nbsp;&nbsp;res.send('Hello World');</p>
                         <p>});</p>
-                        <p>process.stdout.write("Hello World!" + "\n"); // 输出到终端</p>
-                        <p>process.argv.forEach(function(val, index, array) { // 通过参数读取</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;console.log(index + ': ' + val);</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>指定监听端口</td>
+                    <td>
+                       <p>var server = app.listen(3000, function() {</p>
+                       <p>&nbsp;&nbsp;console.log('Listening on port %d', server.address().port);</p>
+                       <p>});</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>运行nodejs应用程序</td>
+                    <td>node app.js</td>
+                </tr>
+            </table>
+            <table class="tableNo1">
+                <tr>
+                    <th colspan="2"><b>路由</b></th>
+                </tr>
+                <tr>
+                    <td width="25%"><b>代码</b></td>
+                    <td><b>描述</b></td>
+                </tr>
+                <tr>
+                    <td>express路由常用的几种方式</td>
+                    <td>
+                        <p>app.use('/', middleware); // get/post时，对于路径/的处理</p>
+                        <p>app.get("/", middleware); // http中get时，对于路径/的处理</p>
+                        <p>app.post("/", middleware); // http中post时，对于路径/的处理</p>
+                        <p>app.put("/", middleware); // http中put时，对于路径/的处理</p>
+                        <p>app.delete("/", middleware); // http中delete时，对于路径/的处理</p>
+                    </td>
+                </tr>
+            </table>
+            <table class="tableNo1">
+                <tr>
+                    <th colspan="2"><b>use 中间件</b></th>
+                </tr>
+                <tr>
+                    <td width="25%"><b>代码</b></td>
+                    <td><b>描述</b></td>
+                </tr>
+                <tr>
+                    <td>use</td>
+                    <td>就是express调用中间件的方法，它返回一个函数</td>
+                </tr>
+                <tr>
+                    <td>使用方法</td>
+                    <td>
+                        <p>app.use(function(request, response) {</p>
+                        <p>&nbsp;&nbsp;response.writeHead(200, { "Content-Type": "text/plain" });</p>
+                        <p>&nbsp;&nbsp;response.end("Hello world!\n");</p>
                         <p>});</p>
-                        <p>console.log(process.execPath); // 获取执行路径</p>
-                        <p>console.log(process.platform); // 平台信息</p>
-                        <p>console.log(process.version); // 输出node当前版本</p>
-                        <p>console.log(process.memoryUsage()); // 输出内存使用情况</p>
+                    </td>
+                </tr>
+            </table>
+            <table class="tableNo1">
+                <tr>
+                    <th colspan="2"><b>middleware 中间件</b></th>
+                </tr>
+                <tr>
+                    <td width="25%"><b>代码</b></td>
+                    <td><b>描述</b></td>
+                </tr>
+                <tr>
+                    <td>middleware</td>
+                    <td>就是处理HTTP请求的函数，包含四个参数：错误处理、客户请求、服务器响应、next中间件</td>
+                </tr>
+                <tr>
+                    <td>四个的时候</td>
+                    <td>function(error, request, response, next){ }</td>
+                </tr>
+                <tr>
+                    <td>三个的时候</td>
+                    <td>function(request, response, next){ }</td>
+                </tr>
+                <tr>
+                    <td>两个的时候</td>
+                    <td>function(request, response){ }</td>
+                </tr>
+            </table>
+            <table class="tableNo1">
+                <tr>
+                    <th colspan="2"><b>requst对象方法</b></th>
+                </tr>
+                <tr>
+                    <td width="25%"><b>代码</b></td>
+                    <td><b>描述</b></td>
+                </tr>
+                <tr>
+                    <td>获取客户ip地址</td>
+                    <td>request.ip</td>
+                </tr>
+                <tr>
+                    <td>获取上传的文件</td>
+                    <td>request.files</td>
+                </tr>
+            </table>
+            <table class="tableNo1">
+                <tr>
+                    <th colspan="2"><b>response对象方法</b></th>
+                </tr>
+                <tr>
+                    <td width="25%"><b>代码</b></td>
+                    <td><b>描述</b></td>
+                </tr>
+                <tr>
+                    <td>重定向redirect</td>
+                    <td>response.redirect("/hello/anime"); // 重定向到/hello/anime</td>
+                </tr>
+                <tr>
+                    <td>发送文件sendFile</td>
+                    <td>response.sendFile("/path/to/anime.mp4"); // 发送anime.mp4文件</td>
+                </tr>
+                <tr>
+                    <td>渲染网页模板render</td>
+                    <td>response.render("index", { message: "Hello World" }); // 将message变量传入index模板，值为"Hello World"渲染成HTML网页</td>
+                </tr>
+            </table>
+            <table class="tableNo1">
+                <tr>
+                    <th colspan="2"><b>路径通配符</b></th>
+                </tr>
+                <tr>
+                    <td width="25%"><b>代码</b></td>
+                    <td><b>描述</b></td>
+                </tr>
+                <tr>
+                    <td>*表示所有路径</td>
+                    <td>
+                        <p>app.get("*", function(request, response) {</p>
+                        <p>&nbsp;&nbsp;response.end("404!");</p>
+                        <p>}); // 所有路径都返回404</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>:表示捕获路径内容</td>
+                    <td>
+                        <p>app.get("/hello/:who", function(req, res) {</p>
+                        <p>&nbsp;&nbsp;res.end("Hello, " + req.params.who + ".");</p>
+                        <p>});//如"/hello/alice”网址，网址中的alice将被捕获，作为req.params.who属性的值</p>
+                    </td>
+                </tr>
+            </table>
+            <table class="tableNo1">
+                <tr>
+                    <th colspan="2"><b>设置环境变量set</b></th>
+                </tr>
+                <tr>
+                    <td width="25%"><b>代码</b></td>
+                    <td><b>描述</b></td>
+                </tr>
+                <tr>
+                    <td>set用于指定变量的值</td>
+                    <td>app.set("view engine", "ejs"); // 使用ejs作为模版</td>
+                </tr>
+            </table>
+            <table class="tableNo1">
+                <tr>
+                    <th colspan="2"><b>动态网页模板 views</b></th>
+                </tr>
+                <tr>
+                    <td width="25%"><b>代码</b></td>
+                    <td><b>描述</b></td>
+                </tr>
+                <tr>
+                    <td>views文件夹，存放所有的放网页模板</td>
+                    <td>
+                        <p>app.set("views", "/views"); // 模板引擎目录</p>
+                        <p>app.set("view engine", "ejs"); // 指定模板引擎</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>使用方法</td>
+                    <td>
+                        <p>// app.js</p>
+                        <p>app.get('/', function(req, res) {</p>
+                        <p>&nbsp;&nbsp;res.render('index',{title:"最近文章"});</p>
+                        <p>});</p>
+                        <p>&nbsp;</p>
+                        <p>// /views/index.js</p>
+                        <p>this is <%=title%>!</p>
+                    </td>
+                </tr>
+            </table>
+            <table class="tableNo1">
+                <tr>
+                    <th colspan="2"><b>指定静态网页目录 public</b></th>
+                </tr>
+                <tr>
+                    <td width="25%"><b>代码</b></td>
+                    <td><b>描述</b></td>
+                </tr>
+                <tr>
+                    <td>public文件夹，存放静态文件</td>
+                    <td>app.use(express.static('public'));</td>
+                </tr>
+                <tr>
+                    <td>用途</td>
+                    <td>
+                        <p>指定静态网页目录,当浏览器发出非HTML文件请求时，服务器端就到public目录寻找这个文件</p>
+                        <p>如：link href="/bootstrap/css/bootstrap.css", 服务器端就到 public/bootstrap/css/目录中寻找bootstrap.css文件</p>
+                    </td>
+                </tr>
+            </table>
+            <table class="tableNo1">
+                <tr>
+                    <th colspan="2"><b>错误内容显示</b></th>
+                </tr>
+                <tr>
+                    <td width="25%"><b>代码</b></td>
+                    <td><b>描述</b></td>
+                </tr>
+                <tr>
+                    <td>使用方法</td>
+                    <td>
+                        <p>app.use(express.bodyParser()); // 使用body参数</p>
+                        <p>app.use(express.methodOverride()); // 使用函数覆盖</p>
+                        <p>app.use(app.router); // 使用路由</p>
+                        <p>app.use(function(err, req, res, next){</p>
+                        <p>&nbsp;&nbsp;console.error(err.stack);</p>
+                        <p>&nbsp;&nbsp;res.send(500, 'Something broke!');</p>
+                        <p>}); // 错误内容显示</p>
                     </td>
                 </tr>
             </table>
