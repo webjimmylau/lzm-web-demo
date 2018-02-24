@@ -1,6 +1,7 @@
 # lzm-web-demo
 - web-api
 
+# 如何开始
 - echo "# lzm-web-demo" >> README.md
 - git init
 - git add README.md
@@ -8,6 +9,7 @@
 - git remote add origin git@github.com:webjimmylau/lzm-web-demo.git
 - git push -u origin master
 
+# 目录
 - 1_01outline.html
 - 1_02name.html
 - 1_03html.html
