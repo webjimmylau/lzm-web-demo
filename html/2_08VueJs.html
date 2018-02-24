@@ -13,10 +13,10 @@
 <div class="head"></div>
 <div class="subMenu">
     <div class="wrap">
-        <div class="subTitle">AngularJS专区：</div>
+        <div class="subTitle">VueJS专区：</div>
         <ul>
-            <li><a href="#01" class="click">AngularJS简介</a></li>
-            <li><a href="#02">AngularJS用法</a></li>
+            <li><a href="#01" class="click">VueJS简介</a></li>
+            <li><a href="#02">VueJS用法</a></li>
         </ul>
     </div>
 </div>
@@ -24,17 +24,15 @@
     <div class="wrap">
         <div class="contBox">
             <i id="01" class="anchor"></i>
-            <h4>AngularJS简介</h4>
-            <p>AngularJS是为了克服HTML在构建应用上的不足而设计的。</p>
-            <p>1、AngularJS 把应用程序数据绑定到 HTML 元素；</p>
-            <p>2、AngularJS 可以克隆和重复 HTML 元素；</p>
-            <p>3、AngularJS 可以隐藏和显示 HTML 元素；</p>
-            <p>4、AngularJS 可以在 HTML 元素"背后"添加代码；</p>
-            <p>5、AngularJS 支持输入验证；</p>
+            <h4>VueJS简介</h4>
+            <p>VueJS学习起来非常简单，但需要了解的知识：HTML、CSS、JavaScript。</p>
+            <p>1、VueJS 是一套构建用户界面的渐进式框架；</p>
+            <p>2、VueJS 只关注视图层， 采用自底向上增量开发的设计；</p>
+            <p>3、VueJS 的目标是通过尽可能简单的 API 实现响应的数据绑定和组合的视图组件。</p>
         </div>
         <div class="contBox">
             <i id="02" class="anchor"></i>
-            <h4>AngularJS用法</h4>
+            <h4>VueJS用法</h4>
             <table class="tableNo1">
                 <tr>
                     <th colspan="2"><b>AngularJS 指令</b></th>
@@ -44,24 +42,32 @@
                     <td><b>描述</b></td>
                 </tr>
                 <tr>
-                    <td>AngularJS 指令</td>
-                    <td>ng-app、ng-model、ng-init</td>
+                    <td>v-model</td>
+                    <td><span class="fn-right">v-model="message"</span></td>
                 </tr>
                 <tr>
-                    <td>ng-app</td>
-                    <td>指令定义一个 AngularJS 应用程序</td>
+                    <td>v-if</td>
+                    <td><span class="fn-right">v-if="yes"</span></td>
                 </tr>
                 <tr>
-                    <td>data-ng-app</td>
-                    <td>AngularJS 属性以 ng- 开头，但是您可以使用 data-ng- 来让网页对 HTML5 有效</td>
+                    <td>v-show</td>
+                    <td><span class="fn-right">v-show="yes"</span></td>
                 </tr>
                 <tr>
-                    <td>ng-model="yourName"</td>
-                    <td>指令把元素值（比如输入域的值）绑定到应用程序</td>
+                    <td>v-else</td>
+                    <td><span class="fn-right"></span></td>
                 </tr>
                 <tr>
-                    <td>ng-init="yourName='Lucy'"</td>
-                    <td>指令初始化 AngularJS 应用程序变量</td>
+                    <td>v-for</td>
+                    <td><span class="fn-right">v-for="item in items"</span></td>
+                </tr>
+                <tr>
+                    <td>v-bind</td>
+                    <td><span class="fn-right">v-bind:class="activeNumber === 1 ? 'current' : ''"</br>:class="activeNumber === 1 ? 'current' : ''"</span></td>
+                </tr>
+                <tr>
+                    <td>v-on</td>
+                    <td><span class="fn-right">v-on:click="createPerson"</br>@click="createPerson"</span></td>
                 </tr>
             </table>
             <table class="tableNo1">
