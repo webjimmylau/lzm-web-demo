@@ -1,8 +1,7 @@
-# lzm-web-demo
-- web-api
+# 前端文档
 ![](https://raw.githubusercontent.com/webjimmylau/lzm-web-demo/master/images/outline_01.jpg)
 
-# 目录
+# 目录结构
 - 1_01outline.html
 - 1_02name.html
 - 1_03html.html
