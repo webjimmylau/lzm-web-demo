@@ -1,7 +1,6 @@
 # lzm-web-demo
 - web-api
-![](https://raw.githubusercontent.com/ckinmind/apple-basket-redux/master/src/images/demo.gif)
-https://raw.githubusercontent.com/webjimmylau/lzm-web-demo/master/images/outline_01.jpg
+![](https://raw.githubusercontent.com/webjimmylau/lzm-web-demo/master/images/outline_01.jpg)
 
 # 如何开始
 - echo "# lzm-web-demo" >> README.md
