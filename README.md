@@ -2,14 +2,6 @@
 - web-api
 ![](https://raw.githubusercontent.com/webjimmylau/lzm-web-demo/master/images/outline_01.jpg)
 
-# 如何开始
-- echo "# lzm-web-demo" >> README.md
-- git init
-- git add README.md
-- git commit -m "first commit"
-- git remote add origin git@github.com:webjimmylau/lzm-web-demo.git
-- git push -u origin master
-
 # 目录
 - 1_01outline.html
 - 1_02name.html
