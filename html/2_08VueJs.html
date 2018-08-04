@@ -17,6 +17,10 @@
         <ul>
             <li><a href="#01" class="click">VueJS简介</a></li>
             <li><a href="#02">VueJS用法</a></li>
+            <li><a href="#03">vue-cli</a></li>
+            <li><a href="#04">移动端</a></li>
+            <li><a href="#05">扩展</a></li>
+            <li><a href="#06">其他</a></li>
         </ul>
     </div>
 </div>
@@ -35,7 +39,7 @@
             <h4>VueJS用法</h4>
             <table class="tableNo1">
                 <tr>
-                    <th colspan="2"><b>AngularJS 指令</b></th>
+                    <th colspan="2"><b>VueJS 指令</b></th>
                 </tr>
                 <tr>
                     <td width="25%"><b>代码</b></td>
@@ -43,358 +47,415 @@
                 </tr>
                 <tr>
                     <td>v-model</td>
-                    <td><span class="fn-right">v-model="message"</span></td>
+                    <td>绑定指令<span class="fn-right">v-model="message"</span></td>
                 </tr>
                 <tr>
                     <td>v-if</td>
-                    <td><span class="fn-right">v-if="yes"</span></td>
+                    <td>条件渲染指令<span class="fn-right">v-if="yes"</span></td>
                 </tr>
                 <tr>
                     <td>v-show</td>
-                    <td><span class="fn-right">v-show="yes"</span></td>
+                    <td>也是条件渲染指令，会被渲染，改变display的值<span class="fn-right">v-show="yes"</span></td>
                 </tr>
                 <tr>
                     <td>v-else</td>
-                    <td><span class="fn-right"></span></td>
+                    <td>v-else元素必须立即跟在v-if后面<span class="fn-right"></span></td>
                 </tr>
                 <tr>
                     <td>v-for</td>
-                    <td><span class="fn-right">v-for="item in items"</span></td>
+                    <td>指令基于一个数组渲染一个列表<span class="fn-right">v-for="item in items"</span></td>
                 </tr>
                 <tr>
                     <td>v-bind</td>
-                    <td><span class="fn-right">v-bind:class="activeNumber === 1 ? 'current' : ''"</br>:class="activeNumber === 1 ? 'current' : ''"</span></td>
+                    <td>指令可以在其名称后面带一个参数<span class="fn-right">v-bind:class="activeNumber === 1 ? 'current' : ''"</br>:class="activeNumber === 1 ? 'current' : ''"</span></td>
                 </tr>
                 <tr>
                     <td>v-on</td>
-                    <td><span class="fn-right">v-on:click="createPerson"</br>@click="createPerson"</span></td>
+                    <td>指令用于给监听DOM事件<span class="fn-right">v-on:click="createPerson"</br>@click="createPerson"</span></td>
+                </tr>
+            </table>
+        </div>
+        <div class="contBox">
+            <i id="03" class="anchor"></i>
+            <h4>vue-cli</h4>
+            <table class="tableNo1">
+                <tr>
+                    <th colspan="2"><b>脚手架搭建</b></th>
+                </tr>
+                <tr>
+                    <td width="25%"><b>描述</b></td>
+                    <td><b>代码</b></td>
+                </tr>
+                <tr>
+                    <td>准备</td>
+                    <td>npm install vue-cli -g<span class="fn-right">确保已全局安装node、npm</span></td>
+                </tr>
+                <tr>
+                    <td>下载</td>
+                    <td>vue init webpack my-project<span class="fn-right">下载脚手架项目</span></td>
+                </tr>
+                <tr>
+                    <td>运行</td>
+                    <td>npm start<span class="fn-right">把服务跑起来</span></td>
                 </tr>
             </table>
             <table class="tableNo1">
                 <tr>
-                    <th colspan="2"><b>AngularJS 表达式</b></th>
+                    <th colspan="2"><b>初始配置</b></th>
                 </tr>
                 <tr>
-                    <td width="25%"><b>代码</b></td>
-                    <td><b>描述</b></td>
+                    <td width="25%"><b>描述</b></td>
+                    <td><b>代码</b></td>
                 </tr>
                 <tr>
-                    <td>AngularJS 表达式</td>
-                    <td>{{ expression }}、ng-bind</td>
+                    <td>路由去掉“#”</td>
+                    <td>
+                        修改文件：main.js/routes.js<br>
+                        const router = new VueRouter({<br>
+                        &nbsp;&nbsp;mode: 'history',<br>
+                        &nbsp;&nbsp;routes: [...]<br>
+                        })
+                    </td>
                 </tr>
                 <tr>
-                    <td>Hello {{yourname ||'World'}}</td>
-                    <td>使用双大括号标记{{}}的内容是问候语中绑定的表达式，这个表达式是一个简单的字符串‘World’</td>
+                    <td>scss预编译</td>
+                    <td>
+                        安装模块：<br>
+                        npm install --save-dev sass-loader<br>
+                        npm install --save-dev node-sass<br>
+                        修改文件：./build/webpack.base.conf.js<br>
+                        {<br>
+                        &nbsp;&nbsp;test: /\.sass$/,<br>
+                        &nbsp;&nbsp;loaders: ['style', 'css', 'sass']<br>
+                        }<br>
+                        修改文件：xxx.vue<br>
+                        style lang='scss'
+                    </td>
                 </tr>
                 <tr>
-                    <td>ng-bind="yourName"</td>
-                    <td>指令把应用程序数据绑定到 HTML 视图</td>
+                    <td>$orange等参数</td>
+                    <td>
+                        安装模块：<br>
+                        npm install --save-dev sass-resources-loader<br>
+                        修改文件：./build/utils.js<br>
+                        scss: generateLoaders('sass').concat(<br>
+                        &nbsp;&nbsp;{<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;loader: 'sass-resources-loader',<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;options: {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;resources: path.resolve(__dirname, '../src/assets/style/_config.scss')<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        &nbsp;&nbsp;}<br>
+                        ),
+                    </td>
+                </tr>
+                <tr>
+                    <td>接口代理，解决跨域的问题</td>
+                    <td>
+                        修改文件：./build/index.js<br>
+                        proxyTable: {<br>
+                        &nbsp;&nbsp;'/lots-web/**': {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;target: 'http://localhost:8080' // 接口的域名<br>
+                        &nbsp;&nbsp;}<br>
+                        },<br>
+                        // 更改端口<br>
+                        port: 6001,<br>
+                        // 是否在编译（输入命令行npm run dev）后打开浏览器http://localhost:6001<br>
+                        autoOpenBrowser: false,
+                    </td>
+                </tr>
+                <tr>
+                    <td>router-link组件的active设置</td>
+                    <td>
+                        全局设置：<br>
+                        export default new VueRouter({<br>
+                        &nbsp;&nbsp;linkActiveClass: 'active',<br>
+                        &nbsp;&nbsp;linkExactActiveClass: 'active',<br>
+                        &nbsp;&nbsp;routes : [<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;... 省略<br>
+                        &nbsp;&nbsp;]<br>
+                        });<br>
+                        局部设置：<br>
+                        &lt;router-link :to="'home'" tag="li" active-class="active" exact-active-class="active" exact&gt;&lt标题router-link&gt;<br>
+                        // 加上exact 则遵循路由完全一致模式，该路由下的路径不匹配
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="contBox">
+            <i id="04" class="anchor"></i>
+            <h4>移动端</h4>
+            <table class="tableNo1">
+                <tr>
+                    <th colspan="2"><b>移动端初始配置</b></th>
+                </tr>
+                <tr>
+                    <td width="25%"><b>描述</b></td>
+                    <td><b>代码</b></td>
+                </tr>
+                <tr>
+                    <td>缩放比例</td>
+                    <td>
+                        修改文件：index.html
+                        meta minimum-scale=1.0, maximum-scale=1.0, user-scalable=no
+                    </td>
+                </tr>
+                <tr>
+                    <td>初始化样式</td>
+                    <td>reset.css</td>
+                </tr>
+                <tr>
+                    <td>1px像素设备不一致</td>
+                    <td>borer.css</td>
+                </tr>
+                <tr>
+                    <td>延迟300ms</td>
+                    <td>
+                        模块 fast-click 解决移动端事件延迟300ms<br>
+                        main.js文件加入：
+                        fastClick.attach(document.body)
+                    </td>
+                </tr>
+                <tr>
+                    <td>stylus运用</td>
+                    <td>
+                        模块 stylus stylus-loader 类似scss预编译<br>
+                        xxx.vue文件：<br>
+                        style lang="stylus"
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="contBox">
+            <i id="05" class="anchor"></i>
+            <h4>扩展</h4>
+            <table class="tableNo1">
+                <tr>
+                    <th colspan="2"><b>开发环境本地数据挂载</b></th>
+                </tr>
+                <tr>
+                    <td width="25%"><b>描述</b></td>
+                    <td><b>代码</b></td>
+                </tr>
+                <tr>
+                    <td>json数据文件路径</td>
+                    <td>static/mock/index.json</td>
+                </tr>
+                <tr>
+                    <td>修改对应配置</td>
+                    <td>
+                        修改 ./config/index.js：<br>
+                        proxyTable: {<br>
+                        &nbsp;&nbsp;'/api': {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;target: 'http://localhost:9000',<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;pathRewrite: {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;'^/api': '/static/mock'<br>
+                        &nbsp;&nbsp;}<br>
+                        &nbsp;&nbsp;}<br>
+                        },
+                    </td>
                 </tr>
             </table>
             <table class="tableNo1">
                 <tr>
-                    <th colspan="2"><b>模块和控制器的应用</b></th>
+                    <th colspan="2"><b>axios接口调用</b></th>
                 </tr>
                 <tr>
-                    <td width="25%"><b>代码</b></td>
-                    <td><b>描述</b></td>
+                    <td width="25%"><b>描述</b></td>
+                    <td><b>代码</b></td>
                 </tr>
                 <tr>
-                    <td>模块和控制器的应用</td>
-                    <td>module、controller</td>
+                    <td>全局调用</td>
+                    <td>
+                        修改main.js文件<br>
+                        Vue.prototype.$ajax = axios<br>
+                        xxx.vue文件：<br>
+                        this.$ajax.get('/api/index.json', {params: {...}}).then(fn(data)).catch(fn(data));
+                    </td>
                 </tr>
                 <tr>
-                    <td>module</td>
-                    <td>定义了 AngularJS 应用</td>
-                </tr>
-                <tr>
-                    <td>controller</td>
-                    <td>定义了 AngularJS 控制器</td>
-                </tr>
-                <tr>
-                    <td>ng-app指令</td>
-                    <td>定义了应用</td>
-                </tr>
-                <tr>
-                    <td>ng-controller指令</td>
-                    <td>定义了控制器</td>
+                    <td>局部调用</td>
+                    <td>
+                        xxx.vue文件：<br>
+                        import axios from 'axios'<br>
+                        axios.get('/api/index.json').then(fn(data)).catch(fn(data));
+                    </td>
                 </tr>
             </table>
             <table class="tableNo1">
                 <tr>
-                    <th colspan="2"><b>AngularJS 过滤器</b></th>
+                    <th colspan="2"><b>iconfont字体图标</b></th>
                 </tr>
                 <tr>
-                    <td width="25%"><b>代码</b></td>
-                    <td><b>描述</b></td>
+                    <td width="25%"><b>描述</b></td>
+                    <td><b>代码</b></td>
                 </tr>
                 <tr>
-                    <td>AngularJS 过滤器</td>
-                    <td>过滤器可以通过一个管道字符（|）和一个过滤器添加到表达式中</td>
+                    <td>网址</td>
+                    <td>
+                        <a href="http://www.iconfont.cn" target="_blank">http://www.iconfont.cn</a>
+                    </td>
                 </tr>
                 <tr>
-                    <td>currency</td>
-                    <td>格式化数字为货币格式</td>
-                </tr>
-                <tr>
-                    <td>filter</td>
-                    <td>从数组项中选择一个子集</td>
-                </tr>
-                <tr>
-                    <td>lowercase</td>
-                    <td>格式化字符串为小写</td>
-                </tr>
-                <tr>
-                    <td>orderBy</td>
-                    <td>根据某个表达式排列数组</td>
-                </tr>
-                <tr>
-                    <td>uppercase</td>
-                    <td>格式化字符串为大写</td>
+                    <td>步骤</td>
+                    <td>
+                        选择图标加入购物车 →<br>
+                        添加到项目 →<br>
+                        下载到本地 →<br>
+                        字体和css复制到项目 →<br>
+                        更改iconfont目录和删除代码 →<br>
+                        引入iconfont.css →<br>
+                        &lt;span class="iconfont user-icon">&#x e624;&gt;&lt;span&gt;
+                    </td>
                 </tr>
             </table>
             <table class="tableNo1">
                 <tr>
-                    <th colspan="2"><b>读取 JSON 文件</b></th>
+                    <th colspan="2"><b>swiper图片轮播</b></th>
                 </tr>
                 <tr>
-                    <td width="25%"><b>代码</b></td>
-                    <td><b>描述</b></td>
+                    <td width="25%"><b>描述</b></td>
+                    <td><b>代码</b></td>
                 </tr>
                 <tr>
-                    <td>读取 JSON 文件</td>
-                    <td>$http 是 AngularJS 中的一个核心服务，用于读取远程服务器的数据</td>
+                    <td>网址</td>
+                    <td>
+                        <a href="https://www.swiper.com.cn/" target="_blank">https://www.swiper.com.cn/</a>
+                    </td>
                 </tr>
                 <tr>
-                    <td>$http.get(url)</td>
-                    <td>用于读取服务器数据的函数</td>
-                </tr>
-                <tr>
-                    <td>url</td>
-                    <td>静态 JSON 数据 http://www.runoob.com/try/angularjs/data/Customers_JSON.php</td>
-                </tr>
-            </table>
-            <table class="tableNo1">
-                <tr>
-                    <th colspan="2"><b>AngularJS 表格</b></th>
-                </tr>
-                <tr>
-                    <td width="25%"><b>代码</b></td>
-                    <td><b>描述</b></td>
-                </tr>
-                <tr>
-                    <td>AngularJS 表格</td>
-                    <td>排序显示，可以使用 orderBy 过滤器 ng-repeat="x in names | orderBy : 'Country'"</td>
-                </tr>
-                <tr>
-                    <td>uppercase</td>
-                    <td>使用 uppercase 过滤器转换为大写 {{ x.Country | uppercase }}</td>
-                </tr>
-                <tr>
-                    <td>$index</td>
-                    <td>表格显示序号可以在中添加 $index {{ $index + 1 }}</td>
-                </tr>
-                <tr>
-                    <td>$even 和 $odd</td>
-                    <td>使用 $even 和 $odd ng-if="$odd" ng-if="$even"</td>
+                    <td>步骤</td>
+                    <td>
+                        模块 vue-awesome-swiper 轮播插件<br>
+                        修改main.js：<br>
+                        import "swiper/dist/css/swiper.css"<br>
+                        Vue.use(VueAwesomeSwiper)<br>
+                        xxx.vue文件：<br>
+                        &lt;swiper :options="swiperOption" v-if="hasBanner"&gt;<br>
+                        &nbsp;&nbsp;&lt;swiper-slide v-for="item in list"&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;img :src="item.imgUrl"&gt;<br>
+                        &nbsp;&nbsp;&lt;/swiper-slide&gt;<br>
+                        &nbsp;&nbsp;&lt;div class="swiper-pagination" slot="pagination"&gt;&lt;/div&gt;<br>
+                        &lt;/swiper&gt;
+                    </td>
                 </tr>
             </table>
             <table class="tableNo1">
                 <tr>
-                    <th colspan="2"><b>AngularJS HTML DOM</b></th>
+                    <th colspan="2"><b>better-scroll滚动界面</b></th>
                 </tr>
                 <tr>
-                    <td width="25%"><b>代码</b></td>
-                    <td><b>描述</b></td>
+                    <td width="25%"><b>描述</b></td>
+                    <td><b>代码</b></td>
                 </tr>
                 <tr>
-                    <td>AngularJS HTML DOM</td>
-                    <td>AngularJS 为 HTML DOM 元素的属性提供了绑定应用数据的指令</td>
+                    <td>全局</td>
+                    <td>
+                        修改main.js文件：<br>
+                        import BScroll from 'better-scroll'<br>
+                        Vue.prototype.$scroll= BScroll<br>
+                        xxx.vue文件：<br>
+                        mounted() {<br>
+                        &nbsp;&nbsp;this.scroll = new this.$scroll(elevent); // element为dom或$refs<br>
+                        },
+                    </td>
                 </tr>
                 <tr>
-                    <td>ng-disabled</td>
-                    <td>指令直接绑定应用程序数据到 HTML 的 disabled 属性</td>
-                </tr>
-                <tr>
-                    <td>ng-show</td>
-                    <td>指令隐藏或显示一个 HTML 元素</td>
-                </tr>
-                <tr>
-                    <td>ng-hide</td>
-                    <td>指令用于隐藏或显示 HTML 元素</td>
-                </tr>
-            </table>
-            <table class="tableNo1">
-                <tr>
-                    <th colspan="2"><b>AngularJS 事件</b></th>
-                </tr>
-                <tr>
-                    <td width="25%"><b>代码</b></td>
-                    <td><b>描述</b></td>
-                </tr>
-                <tr>
-                    <td>AngularJS 事件</td>
-                    <td>AngularJS 有自己的 HTML 事件指令</td>
-                </tr>
-                <tr>
-                    <td>ng-click</td>
-                    <td>指令定义了 AngularJS 点击事件</td>
-                </tr>
-                <tr>
-                    <td>ng-show</td>
-                    <td>指令隐藏或显示一个 HTML 元素</td>
-                </tr>
-                <tr>
-                    <td>ng-hide</td>
-                    <td>指令用于隐藏或显示 HTML 元素</td>
+                    <td>局部</td>
+                    <td>
+                        xxx.vue文件：<br>
+                        import BScroll from 'better-scroll'<br>
+                        this.scrolll = new BScroll(this.$refs.wrapper)
+                    </td>
                 </tr>
             </table>
             <table class="tableNo1">
                 <tr>
-                    <th colspan="2"><b>AngularJS 表单</b></th>
+                    <th colspan="2"><b>keep-alive数据缓存</b></th>
                 </tr>
                 <tr>
-                    <td width="25%"><b>代码</b></td>
-                    <td><b>描述</b></td>
+                    <td width="25%"><b>描述</b></td>
+                    <td><b>代码</b></td>
                 </tr>
                 <tr>
-                    <td>AngularJS 表单</td>
-                    <td>AngularJS 表单是输入控件的集合</td>
-                </tr>
-                <tr>
-                    <td>HTML 控件</td>
-                    <td>input 元素、select 元素、button 元素、textarea 元素</td>
-                </tr>
-                <tr>
-                    <td>novalidate</td>
-                    <td>属性是在 HTML5 中新增的。禁用了使用浏览器的默认验证</td>
-                </tr>
-            </table>
-            <table class="tableNo1">
-                <tr>
-                    <th colspan="2"><b>AngularJS 全局 API</b></th>
-                </tr>
-                <tr>
-                    <td width="25%"><b>代码</b></td>
-                    <td><b>描述</b></td>
-                </tr>
-                <tr>
-                    <td>AngularJS 全局 API</td>
-                    <td>用于执行常见任务的 JavaScript 函数集合，如：比较对象、迭代对象、转换对象</td>
-                </tr>
-                <tr>
-                    <td>angular.lowercase()</td>
-                    <td>转换字符串为小写</td>
-                </tr>
-                <tr>
-                    <td>angular.uppercase()</td>
-                    <td>转换字符串为大写</td>
-                </tr>
-                <tr>
-                    <td>angular.isString()</td>
-                    <td>判断给定的对象是否为字符串，如果是返回 true</td>
-                </tr>
-                <tr>
-                    <td>angular.isNumber()</td>
-                    <td>判断给定的对象是否为数字，如果是返回 true</td>
+                    <td>用法</td>
+                    <td>
+                        &lt;keep-alive&gt;<br>
+                        &nbsp;&nbsp;&lt;router-view/&gt;<br>
+                        &lt;/keep-alive&gt;<br>
+                        1、如不填，则缓存全部组件<br>
+                        2、keep-alive include="City"，缓存name='City'的组件<br>
+                        3、keep-alive exclude="Detail"，不缓存name='Detail'的组件
+                    </td>
                 </tr>
             </table>
+        </div>
+        <div class="contBox">
+            <i id="06" class="anchor"></i>
+            <h4>其他</h4>
             <table class="tableNo1">
                 <tr>
-                    <th colspan="2"><b>AngularJS 指令解析</b></th>
+                    <th colspan="2"><b>其他</b></th>
                 </tr>
                 <tr>
-                    <td width="25%"><b>代码</b></td>
-                    <td><b>描述</b></td>
+                    <td width="25%"><b>描述</b></td>
+                    <td><b>代码</b></td>
                 </tr>
                 <tr>
-                    <td>html ng-app</td>
-                    <td>为 html 元素定义一个应用(未命名)</td>
+                    <td>子父组件传值</td>
+                    <td>
+                        子组件：<br>
+                        handleClick(){<br>
+                        &nbsp;&nbsp;this.$emit('change', value)<br>
+                        }<br>
+                        父组件：<br>
+                        &lt;component @change="handleClick"&gt;&lt;/component&gt;<br>
+                        handleClick(){}
+                    </td>
                 </tr>
                 <tr>
-                    <td>body ng-controller</td>
-                    <td>为 body 元素定义一个控制器</td>
+                    <td>定位到某个元素</td>
+                    <td>
+                        this.scroll.scrollToElement(element)
+                    </td>
                 </tr>
                 <tr>
-                    <td>tr ng-repeat</td>
-                    <td>循环 users 对象数组，每个 user 对象放在 tr 元素中</td>
+                    <td>利用setTimeout节流</td>
+                    <td>
+                        if(this.timer) clearTimeout(timer);<br>
+                        this.timer = setTimeout(()=>{<br>
+                        &nbsp;&nbsp;console.log(''xxx')<br>
+                        }, 16);
+                    </td>
                 </tr>
                 <tr>
-                    <td>button ng-click</td>
-                    <td>当点击 button 元素时调用函数 editUser()</td>
+                    <td>生命周期</td>
+                    <td>
+                        activated 当组件被激活的时候调用<br>
+                        deactivated 当组件被移除的时候调用
+                    </td>
                 </tr>
                 <tr>
-                    <td>h3 ng-show</td>
-                    <td>如果 edit = true 显示 h3 元素</td>
+                    <td>滚动监听</td>
+                    <td>
+                        window.addEventListener('scroll', this.handleScroll);
+                    </td>
                 </tr>
                 <tr>
-                    <td>h3 ng-hide</td>
-                    <td>如果 edit = true 隐藏 h3 元素</td>
+                    <td>保持界面在顶部位置</td>
+                    <td>
+                        vue-router 滚动行为，路由跳转确保界面在顶部位置<br>
+                        scrollBehavior (to, from, savedPosition) {<br>
+                        &nbsp;&nbsp;return { x: 0, y: 0 }<br>
+                        }
+                    </td>
                 </tr>
                 <tr>
-                    <td>input ng-model</td>
-                    <td>为应用程序绑定 input 元素</td>
-                </tr>
-                <tr>
-                    <td>button ng-disabled</td>
-                    <td>如果发生错误或者 ncomplete = true 禁用 button 元素</td>
-                </tr>
-                <tr>
-                    <td>div ng-include="'form.html'"</td>
-                    <td>使用 ng-include 指令来包含 HTML 内容</td>
-                </tr>
-            </table>
-            <table class="tableNo1">
-                <tr>
-                    <th colspan="2"><b>AngularJS 指令解析</b></th>
-                </tr>
-                <tr>
-                    <td width="25%"><b>代码</b></td>
-                    <td><b>描述</b></td>
-                </tr>
-                <tr>
-                    <td>$scope.fName</td>
-                    <td>模型变量 (用户名)</td>
-                </tr>
-                <tr>
-                    <td>$scope.lName</td>
-                    <td>模型变量 (用户姓)</td>
-                </tr>
-                <tr>
-                    <td>$scope.passw1</td>
-                    <td>模型变量 (用户密码 1)</td>
-                </tr>
-                <tr>
-                    <td>$scope.passw2</td>
-                    <td>模型变量 (用户密码 2)</td>
-                </tr>
-                <tr>
-                    <td>$scope.users</td>
-                    <td>模型变量 (用户的数组)</td>
-                </tr>
-                <tr>
-                    <td>$scope.edit</td>
-                    <td>当用户点击创建用户时设置为true</td>
-                </tr>
-                <tr>
-                    <td>$scope.error</td>
-                    <td>如果 passw1 不等于 passw2 设置为 true</td>
-                </tr>
-                <tr>
-                    <td>$scope.incomplete</td>
-                    <td>如果每个字段都为空(length = 0)设置为 true</td>
-                </tr>
-                <tr>
-                    <td>$scope.editUser	</td>
-                    <td>设置模型变量</td>
-                </tr>
-                <tr>
-                    <td>$scope.watch</td>
-                    <td>监控模型变量</td>
-                </tr>
-                <tr>
-                    <td>$scope.test</td>
-                    <td>验证模型变量的错误和完整性</td>
+                    <td>组件里name的作用</td>
+                    <td>
+                        1、递归组件会用到<br>
+                        2、取消缓存的时候会用到<br>
+                        3、浏览器vue插件显示组件的时候用到
+                    </td>
                 </tr>
             </table>
         </div>
