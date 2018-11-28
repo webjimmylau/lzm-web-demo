@@ -17,18 +17,22 @@
         <ul>
             <li><a href="#01" class="click">vue</a></li>
             <li><a href="#02">vue-cli</a></li>
-            <li><a href="#03">main.js</a></li>
-            <li><a href="#04">router.js</a></li>
-            <li><a href="#05">store.js</a></li>
-            <li><a href="#06">app.vue</a></li>
-            <li><a href="#07">config/index.js</a></li>
-            <li><a href="#08">axios</a></li>
-            <li><a href="#09">webpack.base.conf.js</a></li>
-            <li><a href="#10">utils.js</a></li>
-            <li><a href="#11">扩展</a></li>
-            <li><a href="#12">移动端</a></li>
-            <li><a href="#13">fade</a></li>
-            <li><a href="#14">其他</a></li>
+            <li><a href="#03">config/index.js</a></li>
+            <li><a href="#04">build/webpack.base.conf.js</a></li>
+            <li><a href="#05">build/utils.js</a></li>
+            <li><a href="#06">src/main.js</a></li>
+            <li><a href="#07">src/app.vue</a></li>
+            <li><a href="#08">src/router/index.js</a></li>
+            <li><a href="#09">src/store/index.js</a></li>
+            <li><a href="#10">axios</a></li>
+            <li><a href="#11">移动端</a></li>
+            <li><a href="#12">iconfont</a></li>
+            <li><a href="#13">better-scroll</a></li>
+            <li><a href="#14">vue-awesome-swiper</a></li>
+            <li><a href="#15">router-link</a></li>
+            <li><a href="#16">fade</a></li>
+            <li><a href="#17">touch</a></li>
+            <li><a href="#18">其他</a></li>
         </ul>
     </div>
 </div>
@@ -113,10 +117,134 @@
         </div>
         <div class="contBox">
             <i id="03" class="anchor"></i>
-            <h4>main.js</h4>
+            <h4>config/index.js</h4>
             <table class="tableNo1">
                 <tr>
-                    <th colspan="2"><b>./src/main.js</b></th>
+                    <th colspan="2"><b>接口代理设置</b></th>
+                </tr>
+                <tr>
+                    <td width="25%"><b>描述</b></td>
+                    <td><b>代码</b></td>
+                </tr>
+                <tr>
+                    <td>解决跨域的问题</td>
+                    <td>
+                        <p>修改文件：./config/index.js</p>
+                        <p>proxyTable: {</p>
+                        <p>&nbsp;&nbsp;'/lots-web/**': {</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;target: 'http://localhost:8080' // 接口的域名</p>
+                        <p>&nbsp;&nbsp;}</p>
+                        <p>},</p>
+                        <p>// 更改端口</p>
+                        <p>port: 6001,</p>
+                        <p>// 是否在编译（输入命令行npm run dev）后打开浏览器http://localhost:6001</p>
+                        <p>autoOpenBrowser: false,</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>开发环境本地数据挂载</td>
+                    <td>
+                        <p>proxyTable: {</p>
+                        <p>&nbsp;&nbsp;'/api': {</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;target: 'http://localhost:7000',</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;pathRewrite: {</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;'^/api': '/static/mock'</p>
+                        <p>&nbsp;&nbsp;}</p>
+                        <p>&nbsp;&nbsp;}</p>
+                        <p>},</p>
+                        <p>json数据文件路径：static/mock/index.json</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="contBox">
+            <i id="04" class="anchor"></i>
+            <h4>build/webpack.base.conf.js</h4>
+            <table class="tableNo1">
+                <tr>
+                    <th colspan="2"><b>styles路径/scss预编译</b></th>
+                </tr>
+                <tr>
+                    <td width="25%"><b>描述</b></td>
+                    <td><b>代码</b></td>
+                </tr>
+                <tr>
+                    <td>styles路径配置</td>
+                    <td>
+                        <p>alias: {</p>
+                        <p>&nbsp;&nbsp;'vue$': 'vue/dist/vue.esm.js',</p>
+                        <p>&nbsp;&nbsp;'@': resolve('src'),</p>
+                        <p>&nbsp;&nbsp;'styles': resolve('src/assets/styles')</p>
+                        <p>}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>scss预编译</td>
+                    <td>
+                        <p>安装模块：</p>
+                        <p>npm install --save-dev sass-loader</p>
+                        <p>npm install --save-dev node-sass</p>
+                        <p>{</p>
+                        <p>&nbsp;&nbsp;test: /\.sass$/,</p>
+                        <p>&nbsp;&nbsp;loaders: ['style', 'css', 'sass']</p>
+                        <p>}</p>
+                        <p>修改文件：xxx.vue</p>
+                        <p>style lang='scss'</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="contBox">
+            <i id="05" class="anchor"></i>
+            <h4>build/utils.js</h4>
+            <table class="tableNo1">
+                <tr>
+                    <th colspan="2"><b>variables.scss/variables.styl预编译</b></th>
+                </tr>
+                <tr>
+                    <td width="25%"><b>描述</b></td>
+                    <td><b>代码</b></td>
+                </tr>
+                <tr>
+                    <td>全局引用variables.scss变量文件</td>
+                    <td>
+                        <p>安装模块：</p>
+                        <p>npm install --save-dev sass-resources-loader</p>
+                        <p>scss: generateLoaders('sass').concat(</p>
+                        <p>&nbsp;&nbsp;{</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;loader: 'sass-resources-loader',</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;options: {</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;resources: path.resolve(__dirname, '../src/assets/styles/variables.scss')</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;}</p>
+                        <p>&nbsp;&nbsp;}</p>
+                        <p>),</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>全局引用variables.styl变量文件</td>
+                    <td>
+                        <p> 安装模块：</p>
+                        <p>npm install --save-dev stylus</p>
+                        <p>npm install --save-dev stylus-loader</p>
+                        <p>const stylusOptions = {</p>
+                        <p>&nbsp;&nbsp;import: [</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;path.join(__dirname, "../src/assets/styles/variables.styl")</p>
+                        <p>&nbsp;&nbsp;]</p>
+                        <p>}</p>
+                        <p>return {</p>
+                        <p>&nbsp;&nbsp;stylus: generateLoaders('stylus', stylusOptions),</p>
+                        <p>&nbsp;&nbsp;styl: generateLoaders('stylus', stylusOptions)</p>
+                        <p>}</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="contBox">
+            <i id="06" class="anchor"></i>
+            <h4>src/main.js</h4>
+            <table class="tableNo1">
+                <tr>
+                    <th colspan="2"><b>主文件</b></th>
                 </tr>
                 <tr>
                     <td width="25%"><b>描述</b></td>
@@ -204,11 +332,55 @@
             </table>
         </div>
         <div class="contBox">
-            <i id="04" class="anchor"></i>
-            <h4>router.js</h4>
+            <i id="07" class="anchor"></i>
+            <h4>src/App.vue</h4>
             <table class="tableNo1">
                 <tr>
-                    <th colspan="2"><b>./router/index.js</b></th>
+                    <th colspan="2"><b>vue入口文件</b></th>
+                </tr>
+                <tr>
+                    <td width="25%"><b>描述</b></td>
+                    <td><b>代码</b></td>
+                </tr>
+                <tr>
+                    <td>keep-alive数据缓存</td>
+                    <td>
+                        <p>&lt;keep-alive :exclude="exclude"&gt;</p>
+                        <p>&nbsp;&nbsp;&lt;router-view/&gt;</p>
+                        <p>&lt;/keep-alive&gt;</p>
+                        <p>data(){</p>
+                        <p>&nbsp;&nbsp;return {</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;exclude: [</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'Detail'</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;]</p>
+                        <p>&nbsp;&nbsp;}</p>
+                        <p>}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>用法</td>
+                    <td>
+                        <p>1、如不填，则缓存全部组件</p>
+                        <p>2、keep-alive include="City"，缓存name='City'的组件</p>
+                        <p>3、keep-alive exclude="Detail"，不缓存name='Detail'的组件</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>生命周期</td>
+                    <td>
+                        <p>当时用keep-alive的时候，会触发activated和deactivated生命周期</p>
+                        <p>activated 当组件被激活的时候调用</p>
+                        <p>deactivated 当组件被移除的时候调用</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="contBox">
+            <i id="08" class="anchor"></i>
+            <h4>src/router/index.js</h4>
+            <table class="tableNo1">
+                <tr>
+                    <th colspan="2"><b>路由文件人口</b></th>
                 </tr>
                 <tr>
                     <td width="25%"><b>描述</b></td>
@@ -280,11 +452,11 @@
             </table>
         </div>
         <div class="contBox">
-            <i id="05" class="anchor"></i>
-            <h4>store.js</h4>
+            <i id="09" class="anchor"></i>
+            <h4>src/store/index.js</h4>
             <table class="tableNo1">
                 <tr>
-                    <th colspan="2"><b>./store/index.js</b></th>
+                    <th colspan="2"><b>状态管理文件入口</b></th>
                 </tr>
                 <tr>
                     <td width="25%"><b>描述</b></td>
@@ -369,97 +541,11 @@
             </table>
         </div>
         <div class="contBox">
-            <i id="06" class="anchor"></i>
-            <h4>App.vue</h4>
-            <table class="tableNo1">
-                <tr>
-                    <th colspan="2"><b>./src/App.vue</b></th>
-                </tr>
-                <tr>
-                    <td width="25%"><b>描述</b></td>
-                    <td><b>代码</b></td>
-                </tr>
-                <tr>
-                    <td>keep-alive数据缓存</td>
-                    <td>
-                        <p>&lt;keep-alive :exclude="exclude"&gt;</p>
-                        <p>&nbsp;&nbsp;&lt;router-view/&gt;</p>
-                        <p>&lt;/keep-alive&gt;</p>
-                        <p>data(){</p>
-                        <p>&nbsp;&nbsp;return {</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;exclude: [</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'Detail'</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;]</p>
-                        <p>&nbsp;&nbsp;}</p>
-                        <p>}</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>用法</td>
-                    <td>
-                        <p>1、如不填，则缓存全部组件</p>
-                        <p>2、keep-alive include="City"，缓存name='City'的组件</p>
-                        <p>3、keep-alive exclude="Detail"，不缓存name='Detail'的组件</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>生命周期</td>
-                    <td>
-                        当时用keep-alive的时候，会触发activated和deactivated生命周期
-                        activated 当组件被激活的时候调用<br>
-                        deactivated 当组件被移除的时候调用
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div class="contBox">
-            <i id="07" class="anchor"></i>
-            <h4>config/index.js</h4>
-            <table class="tableNo1">
-                <tr>
-                    <th colspan="2"><b>接口代理设置</b></th>
-                </tr>
-                <tr>
-                    <td width="25%"><b>描述</b></td>
-                    <td><b>代码</b></td>
-                </tr>
-                <tr>
-                    <td>解决跨域的问题</td>
-                    <td>
-                        修改文件：./config/index.js<br>
-                        proxyTable: {<br>
-                        &nbsp;&nbsp;'/lots-web/**': {<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;target: 'http://localhost:8080' // 接口的域名<br>
-                        &nbsp;&nbsp;}<br>
-                        },<br>
-                        // 更改端口<br>
-                        port: 6001,<br>
-                        // 是否在编译（输入命令行npm run dev）后打开浏览器http://localhost:6001<br>
-                        autoOpenBrowser: false,
-                    </td>
-                </tr>
-                <tr>
-                    <td>开发环境本地数据挂载</td>
-                    <td>
-                        proxyTable: {<br>
-                        &nbsp;&nbsp;'/api': {<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;target: 'http://localhost:7000',<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;pathRewrite: {<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;'^/api': '/static/mock'<br>
-                        &nbsp;&nbsp;}<br>
-                        &nbsp;&nbsp;}<br>
-                        },<br>
-                        json数据文件路径：static/mock/index.json
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div class="contBox">
-            <i id="08" class="anchor"></i>
+            <i id="10" class="anchor"></i>
             <h4>axios</h4>
             <table class="tableNo1">
                 <tr>
-                    <th colspan="2"><b>axios接口调用</b></th>
+                    <th colspan="2"><b>$http调用接口</b></th>
                 </tr>
                 <tr>
                     <td width="25%"><b>描述</b></td>
@@ -468,18 +554,18 @@
                 <tr>
                     <td>全局调用</td>
                     <td>
-                        修改main.js文件<br>
-                        Vue.prototype.$ajax = axios<br>
-                        xxx.vue文件：<br>
-                        this.$ajax.get('/api/index.json', {params: {...}}).then(fn(data)).catch(fn(data));
+                        <p>修改main.js文件</p>
+                        <p>Vue.prototype.$ajax = axios</p>
+                        <p>xxx.vue文件：</p>
+                        <p>this.$ajax.get('/api/index.json', {params: {...}}).then(fn(data)).catch(fn(data));</p>
                     </td>
                 </tr>
                 <tr>
                     <td>局部调用</td>
                     <td>
-                        xxx.vue文件：<br>
-                        import axios from 'axios'<br>
-                        axios.get('/api/index.json').then(fn(data)).catch(fn(data));
+                        <p>xxx.vue文件：</p>
+                        <p>import axios from 'axios'</p>
+                        <p>axios.get('/api/index.json').then(fn(data)).catch(fn(data));</p>
                     </td>
                 </tr>
                 <tr>
@@ -511,93 +597,64 @@
             </table>
         </div>
         <div class="contBox">
-            <i id="09" class="anchor"></i>
-            <h4>webpack.base.conf.js</h4>
-            <table class="tableNo1">
-                <tr>
-                    <th colspan="2"><b>./build/webpack.base.conf.js</b></th>
-                </tr>
-                <tr>
-                    <td width="25%"><b>描述</b></td>
-                    <td><b>代码</b></td>
-                </tr>
-                <tr>
-                    <td>styles路径配置</td>
-                    <td>
-                        alias: {<br>
-                        &nbsp;&nbsp;'vue$': 'vue/dist/vue.esm.js',<br>
-                        &nbsp;&nbsp;'@': resolve('src'),<br>
-                        &nbsp;&nbsp;'styles': resolve('src/assets/styles')<br>
-                        }
-                    </td>
-                </tr>
-                <tr>
-                    <td>scss预编译</td>
-                    <td>
-                        安装模块：<br>
-                        npm install --save-dev sass-loader<br>
-                        npm install --save-dev node-sass<br>
-                        {<br>
-                        &nbsp;&nbsp;test: /\.sass$/,<br>
-                        &nbsp;&nbsp;loaders: ['style', 'css', 'sass']<br>
-                        }<br>
-                        修改文件：xxx.vue<br>
-                        style lang='scss'
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div class="contBox">
-            <i id="10" class="anchor"></i>
-            <h4>utils.js</h4>
-            <table class="tableNo1">
-                <tr>
-                    <th colspan="2"><b>./build/utils.js</b></th>
-                </tr>
-                <tr>
-                    <td width="25%"><b>描述</b></td>
-                    <td><b>代码</b></td>
-                </tr>
-                <tr>
-                    <td>全局引用variables.scss变量文件</td>
-                    <td>
-                        安装模块：<br>
-                        npm install --save-dev sass-resources-loader<br>
-                        scss: generateLoaders('sass').concat(<br>
-                        &nbsp;&nbsp;{<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;loader: 'sass-resources-loader',<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;options: {<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;resources: path.resolve(__dirname, '../src/assets/style/variables.scss')<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;}<br>
-                        &nbsp;&nbsp;}<br>
-                        ),
-                    </td>
-                </tr>
-                <tr>
-                    <td>全局引用variables.styl变量文件</td>
-                    <td>
-                        <p> 安装模块：</p>
-                        <p>npm install --save-dev stylus</p>
-                        <p>npm install --save-dev stylus-loader</p>
-                        <p>const stylusOptions = {</p>
-                        <p>&nbsp;&nbsp;import: [</p>
-                        <p>&nbsp;&nbsp;&nbsp;&nbsp;path.join(__dirname, "../src/assets/styles/variables.styl")</p>
-                        <p>&nbsp;&nbsp;]</p>
-                        <p>}</p>
-                        <p>return {</p>
-                        <p>&nbsp;&nbsp;stylus: generateLoaders('stylus', stylusOptions),</p>
-                        <p>&nbsp;&nbsp;styl: generateLoaders('stylus', stylusOptions)</p>
-                        <p>}</p>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div class="contBox">
             <i id="11" class="anchor"></i>
-            <h4>扩展</h4>
+            <h4>移动端</h4>
             <table class="tableNo1">
                 <tr>
-                    <th colspan="2"><b>iconfont字体图标</b></th>
+                    <th colspan="2"><b>移动端初始配置</b></th>
+                </tr>
+                <tr>
+                    <td width="25%"><b>描述</b></td>
+                    <td><b>代码</b></td>
+                </tr>
+                <tr>
+                    <td>移动端访问</td>
+                    <td>
+                        <p>修改package.json文件：--host 0.0.0.0</p>
+                        <p>mac查看ip ifconfig</p>
+                        <p>windows查看ip ipconfig</p>
+                        <p>手机访问 ip:7000</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>缩放比例</td>
+                    <td>
+                        <p>修改文件：index.html</p>
+                        <p>meta minimum-scale=1.0, maximum-scale=1.0, user-scalable=no</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>初始化样式</td>
+                    <td>reset.css</td>
+                </tr>
+                <tr>
+                    <td>1px像素设备不一致</td>
+                    <td>borer.css</td>
+                </tr>
+                <tr>
+                    <td>延迟300ms</td>
+                    <td>
+                        <p>模块 fastclick 解决移动端事件延迟300ms</p>
+                        <p>main.js文件加入：</p>
+                        <p>fastClick.attach(document.body)</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>stylus运用</td>
+                    <td>
+                        <p>模块 stylus stylus-loader 类似scss预编译</p>
+                        <p>xxx.vue文件：</p>
+                        <p>style lang="stylus"</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="contBox">
+            <i id="12" class="anchor"></i>
+            <h4>iconfont</h4>
+            <table class="tableNo1">
+                <tr>
+                    <th colspan="2"><b>文字图标</b></th>
                 </tr>
                 <tr>
                     <td width="25%"><b>描述</b></td>
@@ -612,19 +669,62 @@
                 <tr>
                     <td>步骤</td>
                     <td>
-                        选择图标加入购物车 →<br>
-                        添加到项目 →<br>
-                        下载到本地 →<br>
-                        字体和css复制到项目 →<br>
-                        更改iconfont目录和删除代码 →<br>
-                        引入iconfont.css →<br>
-                        &lt;span class="iconfont user-icon">&#x e624;&gt;&lt;span&gt;
+                        <p>选择图标加入购物车 →</p>
+                        <p>添加到项目 →</p>
+                        <p>下载到本地 →</p>
+                        <p>字体和css复制到项目 →</p>
+                        <p>更改iconfont目录和删除代码 →</p>
+                        <p>引入iconfont.css →</p>
+                        <p>&lt;span class="iconfont user-icon">&#x e624;&gt;&lt;span&gt;</p>
                     </td>
                 </tr>
             </table>
+        </div>
+        <div class="contBox">
+            <i id="13" class="anchor"></i>
+            <h4>better-scroll</h4>
             <table class="tableNo1">
                 <tr>
-                    <th colspan="2"><b>swiper图片轮播</b></th>
+                    <th colspan="2"><b>拖动使界面滚动</b></th>
+                </tr>
+                <tr>
+                    <td width="25%"><b>描述</b></td>
+                    <td><b>代码</b></td>
+                </tr>
+                <tr>
+                    <td>全局</td>
+                    <td>
+                        <p>修改main.js文件：</p>
+                        <p>import BScroll from 'better-scroll'</p>
+                        <p>Vue.prototype.$scroll= BScroll</p>
+                        <p>xxx.vue文件：</p>
+                        <p>mounted() {</p>
+                        <p>&nbsp;&nbsp;this.scroll = new this.$scroll(elevent); // element为dom或$refs</p>
+                        <p>},</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>局部</td>
+                    <td>
+                        <p>xxx.vue文件：</p>
+                        <p>import BScroll from 'better-scroll'</p>
+                        <p>this.scrolll = new BScroll(this.$refs.wrapper)</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>定位到某个元素</td>
+                    <td>
+                        this.scroll.scrollToElement(element)
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="contBox">
+            <i id="14" class="anchor"></i>
+            <h4>vue-awesome-swiper</h4>
+            <table class="tableNo1">
+                <tr>
+                    <th colspan="2"><b>图片轮播</b></th>
                 </tr>
                 <tr>
                     <td width="25%"><b>描述</b></td>
@@ -639,58 +739,27 @@
                 <tr>
                     <td>步骤</td>
                     <td>
-                        模块 vue-awesome-swiper 轮播插件<br>
-                        修改main.js：<br>
-                        import "swiper/dist/css/swiper.css"<br>
-                        Vue.use(VueAwesomeSwiper)<br>
-                        xxx.vue文件：<br>
-                        &lt;swiper :options="swiperOption" v-if="hasBanner"&gt;<br>
-                        &nbsp;&nbsp;&lt;swiper-slide v-for="item in list"&gt;<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;img :src="item.imgUrl"&gt;<br>
-                        &nbsp;&nbsp;&lt;/swiper-slide&gt;<br>
-                        &nbsp;&nbsp;&lt;div class="swiper-pagination" slot="pagination"&gt;&lt;/div&gt;<br>
-                        &lt;/swiper&gt;
+                        <p>模块 vue-awesome-swiper 轮播插件</p>
+                        <p>修改main.js：</p>
+                        <p>import "swiper/dist/css/swiper.css"</p>
+                        <p>Vue.use(VueAwesomeSwiper)</p>
+                        <p>xxx.vue文件：</p>
+                        <p>&lt;swiper :options="swiperOption" v-if="hasBanner"&gt;</p>
+                        <p>&nbsp;&nbsp;&lt;swiper-slide v-for="item in list"&gt;</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;&lt;img :src="item.imgUrl"&gt;</p>
+                        <p>&nbsp;&nbsp;&lt;/swiper-slide&gt;</p>
+                        <p>&nbsp;&nbsp;&lt;div class="swiper-pagination" slot="pagination"&gt;&lt;/div&gt;</p>
+                        <p>&lt;/swiper&gt;</p>
                     </td>
                 </tr>
             </table>
+        </div>
+        <div class="contBox">
+            <i id="15" class="anchor"></i>
+            <h4>router-link</h4>
             <table class="tableNo1">
                 <tr>
-                    <th colspan="2"><b>better-scroll滚动界面</b></th>
-                </tr>
-                <tr>
-                    <td width="25%"><b>描述</b></td>
-                    <td><b>代码</b></td>
-                </tr>
-                <tr>
-                    <td>全局</td>
-                    <td>
-                        修改main.js文件：<br>
-                        import BScroll from 'better-scroll'<br>
-                        Vue.prototype.$scroll= BScroll<br>
-                        xxx.vue文件：<br>
-                        mounted() {<br>
-                        &nbsp;&nbsp;this.scroll = new this.$scroll(elevent); // element为dom或$refs<br>
-                        },
-                    </td>
-                </tr>
-                <tr>
-                    <td>局部</td>
-                    <td>
-                        xxx.vue文件：<br>
-                        import BScroll from 'better-scroll'<br>
-                        this.scrolll = new BScroll(this.$refs.wrapper)
-                    </td>
-                </tr>
-                <tr>
-                    <td>定位到某个元素</td>
-                    <td>
-                        this.scroll.scrollToElement(element)
-                    </td>
-                </tr>
-            </table>
-            <table class="tableNo1">
-                <tr>
-                    <th colspan="2"><b>router-link</b></th>
+                    <th colspan="2"><b>路由链接</b></th>
                 </tr>
                 <tr>
                     <td width="25%"><b>描述</b></td>
@@ -699,17 +768,17 @@
                 <tr>
                     <td>router-link组件的active设置</td>
                     <td>
-                        全局设置：<br>
-                        export default new VueRouter({<br>
-                        &nbsp;&nbsp;linkActiveClass: 'active',<br>
-                        &nbsp;&nbsp;linkExactActiveClass: 'active',<br>
-                        &nbsp;&nbsp;routes : [<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;... 省略<br>
-                        &nbsp;&nbsp;]<br>
-                        });<br>
-                        局部设置：<br>
-                        &lt;router-link :to="'home'" tag="li" active-class="active" exact-active-class="active" exact&gt;&lt标题router-link&gt;<br>
-                        // 加上exact 则遵循路由完全一致模式，该路由下的路径不匹配
+                        <p>全局设置：</p>
+                        <p>export default new VueRouter({</p>
+                        <p>&nbsp;&nbsp;linkActiveClass: 'active',</p>
+                        <p>&nbsp;&nbsp;linkExactActiveClass: 'active',</p>
+                        <p>&nbsp;&nbsp;routes : [</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;... 省略</p>
+                        <p>&nbsp;&nbsp;]</p>
+                        <p>});</p>
+                        <p>局部设置：</p>
+                        <p>&lt;router-link :to="'home'" tag="li" active-class="active" exact-active-class="active" exact&gt;&lt标题router-link&gt;</p>
+                        <p>// 加上exact 则遵循路由完全一致模式，该路由下的路径不匹配</p>
                     </td>
                 </tr>
                 <tr>
@@ -721,9 +790,45 @@
                     <td>this.$router.push('/')</td>
                 </tr>
             </table>
+        </div>
+        <div class="contBox">
+            <i id="16" class="anchor"></i>
+            <h4>fade</h4>
             <table class="tableNo1">
                 <tr>
-                    <th colspan="2"><b>touch事件</b></th>
+                    <th colspan="2"><b>过渡动画</b></th>
+                </tr>
+                <tr>
+                    <td width="25%"><b>描述</b></td>
+                    <td><b>代码</b></td>
+                </tr>
+                <tr>
+                    <td>template</td>
+                    <td>
+                        <p>&lt;transition&gt;</p>
+                        <p>&nbsp;&nbsp;&lt;slot&gt;&lt;/slot&gt;</p>
+                        <p>&lt;/transition&gt;</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>style</td>
+                    <td>
+                        <p>&lt;style lang="stylus" scoped&gt;</p>
+                        <p>.v-enter, .v-leave-to</p>
+                        <p>&nbsp;&nbsp;opacity 0</p>
+                        <p>.v-enter-active, .v-leave-active</p>
+                        <p>&nbsp;&nbsp;transition opacity .5s</p>
+                        <p>&lt;/style&gt;</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="contBox">
+            <i id="17" class="anchor"></i>
+            <h4>touch</h4>
+            <table class="tableNo1">
+                <tr>
+                    <th colspan="2"><b>拖动事件</b></th>
                 </tr>
                 <tr>
                     <td width="25%"><b>描述</b></td>
@@ -770,92 +875,7 @@
             </table>
         </div>
         <div class="contBox">
-            <i id="12" class="anchor"></i>
-            <h4>移动端</h4>
-            <table class="tableNo1">
-                <tr>
-                    <th colspan="2"><b>移动端初始配置</b></th>
-                </tr>
-                <tr>
-                    <td width="25%"><b>描述</b></td>
-                    <td><b>代码</b></td>
-                </tr>
-                <tr>
-                    <td>移动端访问</td>
-                    <td>
-                        --host 0.0.0.0<br>
-                        mac查看ip ifconfig<br>
-                        windows查看ip ipconfig<br>
-                        手机访问 ip:7000<br>
-                    </td>
-                </tr>
-                <tr>
-                    <td>缩放比例</td>
-                    <td>
-                        修改文件：index.html
-                        meta minimum-scale=1.0, maximum-scale=1.0, user-scalable=no
-                    </td>
-                </tr>
-                <tr>
-                    <td>初始化样式</td>
-                    <td>reset.css</td>
-                </tr>
-                <tr>
-                    <td>1px像素设备不一致</td>
-                    <td>borer.css</td>
-                </tr>
-                <tr>
-                    <td>延迟300ms</td>
-                    <td>
-                        模块 fast-click 解决移动端事件延迟300ms<br>
-                        main.js文件加入：
-                        fastClick.attach(document.body)
-                    </td>
-                </tr>
-                <tr>
-                    <td>stylus运用</td>
-                    <td>
-                        模块 stylus stylus-loader 类似scss预编译<br>
-                        xxx.vue文件：<br>
-                        style lang="stylus"
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div class="contBox">
-            <i id="13" class="anchor"></i>
-            <h4>fade</h4>
-            <table class="tableNo1">
-                <tr>
-                    <th colspan="2"><b>fade过渡动画</b></th>
-                </tr>
-                <tr>
-                    <td width="25%"><b>描述</b></td>
-                    <td><b>代码</b></td>
-                </tr>
-                <tr>
-                    <td>template</td>
-                    <td>
-                        &lt;transition&gt;<br>
-                        &nbsp;&nbsp;&lt;slot&gt;&lt;/slot&gt;<br>
-                        &lt;/transition&gt;<br>
-                    </td>
-                </tr>
-                <tr>
-                    <td>style</td>
-                    <td>
-                        &lt;style lang="stylus" scoped&gt;<br>
-                        .v-enter, .v-leave-to<br>
-                        &nbsp;&nbsp;opacity 0<br>
-                        .v-enter-active, .v-leave-active<br>
-                        &nbsp;&nbsp;transition opacity .5s<br>
-                        &lt;/style&gt;
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div class="contBox">
-            <i id="14" class="anchor"></i>
+            <i id="18" class="anchor"></i>
             <h4>其他</h4>
             <table class="tableNo1">
                 <tr>
@@ -866,24 +886,52 @@
                     <td><b>代码</b></td>
                 </tr>
                 <tr>
+                    <td>组件里name的作用</td>
+                    <td>
+                        <p>1、递归组件会用到</p>
+                        <p>2、取消缓存的时候会用到</p>
+                        <p>3、浏览器vue插件显示组件的时候用到</p>
+                    </td>
+                </tr>
+                <tr>
                     <td>子父组件传值</td>
                     <td>
-                        子组件：<br>
-                        handleClick(){<br>
-                        &nbsp;&nbsp;this.$emit('change', value)<br>
-                        }<br>
-                        父组件：<br>
-                        &lt;component @change="handleClick"&gt;&lt;/component&gt;<br>
-                        handleClick(){}
+                        <p>子组件：</p>
+                        <p>handleClick(){</p>
+                        <p>&nbsp;&nbsp;this.$emit('change', value)</p>
+                        <p>}</p>
+                        <p>父组件：</p>
+                        <p>&lt;component @change="handleClick"&gt;&lt;/component&gt;</p>
+                        <p>handleClick(){}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>$refs</td>
+                    <td>
+                        <p>this.$refs.msg 普通元素,引用指向dom：</p>
+                        <p>&lt;div ref='msg'&gt;Hello, world&lt;div&gt;</p>
+                        <p>this.$refs.child 组件，引用指向组件实例：</p>
+                        <p>&lt;c-child ref='child'&gt;Hello, world&lt;c-child&gt;</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>$route</td>
+                    <td>
+                        <p>1. /detail/:id</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;/detail/1389435894</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;this.$route.params.id</p>
+                        <p>2. /detail</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;/detail?id=1389435894</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;this.route.query.id</p>
                     </td>
                 </tr>
                 <tr>
                     <td>利用setTimeout节流</td>
                     <td>
-                        if(this.timer) clearTimeout(timer);<br>
-                        this.timer = setTimeout(()=>{<br>
-                        &nbsp;&nbsp;console.log(''xxx')<br>
-                        }, 16);
+                        <p>if(this.timer) clearTimeout(timer);</p>
+                        <p>this.timer = setTimeout(()=>{</p>
+                        <p>&nbsp;&nbsp;console.log(''xxx')</p>
+                        <p>}, 16);</p>
                     </td>
                 </tr>
                 <tr>
@@ -893,11 +941,10 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>组件里name的作用</td>
+                    <td>浏览器cookie</td>
                     <td>
-                        1、递归组件会用到<br>
-                        2、取消缓存的时候会用到<br>
-                        3、浏览器vue插件显示组件的时候用到
+                        <p>localStorage.city = city</p>
+                        <p>localStorage.clear()</p>
                     </td>
                 </tr>
             </table>
